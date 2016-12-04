@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">MEMORIACamiloGarritano</string>
+    <string name="app_name">MEMORIA</string>
     <string name="title_activity_settings">Ajustes</string>
-    <string name="menu_settings">Ajustes</string>
+    <string name="tittle_menu_settings">Preferencias</string>
+    <string name="switch_time">Tiempo</string>
+
 </resources>
