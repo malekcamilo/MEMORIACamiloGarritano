@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MEMORIACamiloGarritano</string>
+    <string name="title_activity_settings">Ajustes</string>
+    <string name="menu_settings">Ajustes</string>
 </resources>
