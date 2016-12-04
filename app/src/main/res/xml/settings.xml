@@ -4,4 +4,5 @@
         android:defaultValue="false"
         android:key="switch_time"
         android:title="@string/switch_time" />
+    <!--Hay que crear las clases que no existe por ejemplo SeekBarPreference y ButtonPreferece-->
 </PreferenceScreen>
