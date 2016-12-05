@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="switch_time"
-        android:summary="sum"
-        android:title="@string/switch_time" />
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="pref_sync"
-        android:summary="sum"
-        android:title="title" />
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/lista_voz"
+        android:entryValues="@array/lista_voz_value"
+        android:key="voz"
+        android:summary="Femenina"
+        android:title="Voz" />
 
-    <!--Hay que crear las clases que no existe por ejemplo SeekBarPreference y ButtonPreferece-->
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/lista_dificultad"
+        android:entryValues="@array/lista_dificultad_value"
+        android:key="dicultad"
+        android:summary="Medio"
+        android:title="Dificultad" />
+
+    <PreferenceCategory android:title="Tiempo">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_tiempo"
+            android:summary=""
+            android:title="" />
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/lista_tiempo"
+            android:entryValues="@array/lista_tiempo_value"
+            android:key="tiempo"
+            android:summary="5 Minutos"
+            android:title="" />
+    </PreferenceCategory>
+
+    <!--Hay que crear las clases que no existe por ejemplo SeekBarPreference y ButtonPreferece
+    O podríamos usar alguna librería de 3ro
     <proyecto.laboratorio.memoriacamilogarritano.SeekBarPreference />
     <proyecto.laboratorio.memoriacamilogarritano.ButtonPreference />
+    -->
 </PreferenceScreen>
