@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
 
@@ -13,6 +15,20 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.eventoBotonComenzar();
+
+
+    }
+
+    private void eventoBotonComenzar() {
+        Button botonComenzar = (Button) findViewById(R.id.button_comenzar);
+        botonComenzar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent c = new Intent(MainActivity.this,JuegoActivity.class);
+                startActivity(c);
+            }
+        });
     }
 
     @Override
