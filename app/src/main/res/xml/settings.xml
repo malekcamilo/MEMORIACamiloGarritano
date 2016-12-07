@@ -31,6 +31,12 @@
             android:title="" />
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="Selección de imágenes">
+        <Preference
+            android:key="boton"
+            android:summary="Imágenes seleccionadas"
+            android:title="Abrir grilla de selección" />
+    </PreferenceCategory>
     <!--Hay que crear las clases que no existe por ejemplo SeekBarPreference y ButtonPreferece
     O podríamos usar alguna librería de 3ro
     <proyecto.laboratorio.memoriacamilogarritano.SeekBarPreference />
