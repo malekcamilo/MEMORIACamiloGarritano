@@ -4,6 +4,9 @@ import android.app.Activity;
 
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class JuegoActivity extends Activity {
@@ -26,13 +30,20 @@ public class JuegoActivity extends Activity {
         //Crear las imagenes en forma programatica o utilizar distintos layouts
 
         //Como es modo Experto son siempre 4 imagenes
+        ImageView img1;
+        ImageView img2;
+        ImageView img3;
+        ImageView img4;
 
-        ImageView img1 = (ImageView) findViewById(R.id.imageView1);
-        ImageView img2 = (ImageView) findViewById(R.id.imageView2);
-        ImageView img3 = (ImageView) findViewById(R.id.imageView3);
-        ImageView img4 = (ImageView) findViewById(R.id.imageView4);
+        img1 = (ImageView) findViewById(R.id.imageView1);
+        img2 = (ImageView) findViewById(R.id.imageView2);
+        img3 = (ImageView) findViewById(R.id.imageView3);
+        img4 = (ImageView) findViewById(R.id.imageView4);
 
-        listadoOpciones.add(img1); listadoOpciones.add(img2); listadoOpciones.add(img3); listadoOpciones.add(img4);
+        listadoOpciones.add(img1);
+        listadoOpciones.add(img2);
+        listadoOpciones.add(img3);
+        listadoOpciones.add(img4);
 
 
         this.eventoSonidosOpciones(listadoOpciones);
