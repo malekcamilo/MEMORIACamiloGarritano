@@ -1,39 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
-        android:defaultValue="1"
+        android:defaultValue="0"
         android:entries="@array/lista_voz"
         android:entryValues="@array/lista_voz_value"
         android:key="voz"
-        android:summary="Femenina"
         android:title="Voz" />
 
     <ListPreference
-        android:defaultValue="1"
+        android:defaultValue="0"
         android:entries="@array/lista_dificultad"
         android:entryValues="@array/lista_dificultad_value"
         android:key="dicultad"
-        android:summary="Medio"
         android:title="Dificultad" />
 
     <PreferenceCategory android:title="Tiempo">
         <SwitchPreference
             android:defaultValue="false"
-            android:key="switch_tiempo"
-            android:summary=""
-            android:title="" />
+            android:key="switch_tiempo" />
         <ListPreference
             android:defaultValue="0"
             android:entries="@array/lista_tiempo"
             android:entryValues="@array/lista_tiempo_value"
             android:key="tiempo"
-            android:summary="5 Minutos"
             android:title="" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="Selección de imágenes">
         <Preference
-            android:key="boton"
+            android:key="lista_imagenes"
             android:summary="Imágenes seleccionadas"
             android:title="Abrir grilla de selección" />
     </PreferenceCategory>
