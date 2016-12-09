@@ -4,6 +4,7 @@
         android:defaultValue="0"
         android:entries="@array/lista_voz"
         android:entryValues="@array/lista_voz_value"
+        android:summary="%s"
         android:key="voz"
         android:title="Voz" />
 
@@ -11,6 +12,7 @@
         android:defaultValue="0"
         android:entries="@array/lista_dificultad"
         android:entryValues="@array/lista_dificultad_value"
+        android:summary="%s"
         android:key="dicultad"
         android:title="Dificultad" />
 
@@ -22,6 +24,7 @@
             android:defaultValue="0"
             android:entries="@array/lista_tiempo"
             android:entryValues="@array/lista_tiempo_value"
+            android:summary="%s"
             android:key="tiempo"
             android:title="" />
     </PreferenceCategory>
