@@ -45,9 +45,10 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="false"
         android:layout_below="@id/linearLayout1"
+        android:id="@+id/layoutRespuestas"
         android:gravity="center_vertical|center_horizontal">
 
-        <ImageView
+        <!--ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@mipmap/ic_launcher"
@@ -70,7 +71,7 @@
             android:layout_height="match_parent"
             android:src="@mipmap/ic_launcher"
             android:id="@+id/imageView4"
-            android:layout_weight="0.25"/>
+            android:layout_weight="0.25"/-->
 
     </LinearLayout>
 
