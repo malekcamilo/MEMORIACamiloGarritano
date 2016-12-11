@@ -5,23 +5,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.text.BoringLayout;
-import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import java.io.IOException;
 
@@ -53,11 +49,12 @@ public class JuegoActivity extends Activity {
         //posicionCorrecta tiene la posicion de la imagen correcta del 0 al (CANTIDAD_FIGURAS_MOSTRAR - 1)
         int posicionCorrecta = this.getRandomInteger(CANTIDAD_FIGURAS_MOSTRAR-1);
 
-        // Aca cambiar texto y sonido de locutor/a
-
         //0 porque tomamos la 1er imagen como la correcta y la cual se mostrara el texto
         Collections.swap(imagesAgregar,0,posicionCorrecta);
-        Log.v("Posicion",String.valueOf(posicionCorrecta));
+        Log.v("Posicion",String.valueOf(posicionCorrecta) + ": " + getResources().getResourceEntryName((Integer) imagesAgregar.get(posicionCorrecta).getTag()));
+
+        Respuesta respuesta = this.cargarRespuesta((Integer) imagesAgregar.get(posicionCorrecta).getTag());
+        this.cambiarNuevaRespuesta(respuesta);
 
 
         for (ImageView imagenView :imagesAgregar) {
@@ -65,7 +62,28 @@ public class JuegoActivity extends Activity {
         }
 
         this.eventoSonidosOpciones(imagesAgregar,posicionCorrecta);
-        this.eventoSonidoRespuesta();
+        //this.eventoSonidoRespuesta();
+    }
+
+    private Respuesta cargarRespuesta(Integer image) {
+        //cargar prefencia voz femenina o masculina
+        String VOZ_TIPO = "FEMENINO";
+        String texto = getResources().getResourceEntryName(image);
+        texto = texto.substring(0,1).toUpperCase() + texto.substring(1);
+        String sonidoPath;
+        if (VOZ_TIPO.equals("FEMENINO")) {
+             sonidoPath = "FEMENINAS/" + texto + " Fem.m4a";
+        }
+        else {
+             sonidoPath = "FEMENINAS/" + texto.substring(0,1).toUpperCase() + texto.substring(1) + " Fem.m4a";
+        }
+        return new Respuesta(image,texto,sonidoPath);
+    }
+
+    private void cambiarNuevaRespuesta(Respuesta respuesta) {
+        TextView textViewRta = (TextView) findViewById(R.id.textView);
+        textViewRta.setText(respuesta.getTexto());
+        this.eventoSonidoRespuesta(respuesta);
     }
 
     private ArrayList<ImageView> cargarFiguras(int cantidad_figuras_mostrar) {
@@ -78,10 +96,15 @@ public class JuegoActivity extends Activity {
     }
 
     private ArrayList<Integer> obtenerIndicesAlAzar(Integer[] images, int cantidad) {
-        //CONTROLAR QUE NO HAYA REPETIDOS!
         ArrayList<Integer> l = new ArrayList<Integer>();
-        for(int i=0;i<cantidad;i++) {
-            l.add(this.getRandomInteger(images.length-1));
+        int i=0;
+        while(i<cantidad) {
+            Integer tmp = this.getRandomInteger(images.length-1);
+            if (!l.contains(tmp)) {
+                l.add(tmp);
+                i++;
+            }
+
         }
         return l;
     }
@@ -94,15 +117,19 @@ public class JuegoActivity extends Activity {
 
         Display display = getWindowManager().getDefaultDisplay();
         DisplayMetrics metrics = new DisplayMetrics();
-        display.getMetrics(metrics); // ((display.getWidth()*20)/100)
+        display.getMetrics(metrics);
         int width = metrics.widthPixels;
-        int height = metrics.heightPixels;// ((display.getHeight()*30)/100)
+        int height = metrics.heightPixels;
 
         ImageView imageView = new ImageView(getApplicationContext());
         imageView.setImageResource(imageId);
         imageView.setTag(imageId);
+
+        imageView.setPadding(2,1,2,1);
+        imageView.setBackgroundColor(Color.GRAY);
+
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0,0);
-        layoutParams.width  = (int) (width * 0.20);
+        layoutParams.width  = (int) (width * 0.25);
         layoutParams.height  = height;
 
         Log.v("widthImagen", String.valueOf(layoutParams.width));
@@ -112,15 +139,16 @@ public class JuegoActivity extends Activity {
         return imageView;
     }
 
-    private void eventoSonidoRespuesta() {
+    private void eventoSonidoRespuesta(final Respuesta respuesta) {
         ImageView img = (ImageView) findViewById(R.id.imageViewParlante);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AssetFileDescriptor descriptor = null;
                 try {
-                    descriptor = getAssets().openFd("FEMENINAS/Matra Fem.m4a");
+                    descriptor = getAssets().openFd(respuesta.getSonidoPath());
                     JuegoActivity.reproducirSonido(descriptor);
+                    descriptor.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -131,7 +159,6 @@ public class JuegoActivity extends Activity {
 
 
     private void eventoSonidosOpciones(ArrayList<ImageView> listadoOpciones, int posicionCorrecta) {
-
 
         View.OnClickListener sonidoIncorrecto  = new View.OnClickListener() {
             @Override
@@ -149,7 +176,6 @@ public class JuegoActivity extends Activity {
             ImageView img1 = listadoOpciones.get(j);
             img1.setOnClickListener(sonidoIncorrecto);
         }
-
 
         ImageView img1 = listadoOpciones.get(posicionCorrecta);
         img1.setOnClickListener(new View.OnClickListener() {
