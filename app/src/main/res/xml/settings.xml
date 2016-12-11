@@ -26,6 +26,7 @@
             android:entryValues="@array/lista_tiempo_value"
             android:summary="%s"
             android:key="tiempo"
+            android:dependency="switch_tiempo"
             android:title="" />
     </PreferenceCategory>
 

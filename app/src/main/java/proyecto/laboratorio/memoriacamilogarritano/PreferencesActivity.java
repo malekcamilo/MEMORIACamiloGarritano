@@ -1,9 +1,7 @@
 package proyecto.laboratorio.memoriacamilogarritano;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 
@@ -50,9 +48,7 @@ public class PreferencesActivity extends PreferenceActivity {
                 ListPreference listPref = (ListPreference) pref;
                 pref.setSummary(listPref.getEntry());
             }
-            if (key.equals("switch_tiempo")){
-
-            }*/
+            */
         }
 
         @Override
