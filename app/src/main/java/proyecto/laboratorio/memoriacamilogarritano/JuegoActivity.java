@@ -66,8 +66,9 @@ public class JuegoActivity extends Activity {
     }
 
     private Respuesta cargarRespuesta(Integer image) {
-        //cargar prefencia voz femenina o masculina
+        //cargar preferencia voz femenina o masculina. VOZ_TIPO esta hardcodeado por ahora
         String VOZ_TIPO = "FEMENINO";
+
         String texto = getResources().getResourceEntryName(image);
         texto = texto.substring(0,1).toUpperCase() + texto.substring(1);
         String sonidoPath;
@@ -75,7 +76,7 @@ public class JuegoActivity extends Activity {
              sonidoPath = "FEMENINAS/" + texto + " Fem.m4a";
         }
         else {
-             sonidoPath = "FEMENINAS/" + texto.substring(0,1).toUpperCase() + texto.substring(1) + " Fem.m4a";
+             sonidoPath = "MASCULINAS/" + texto.substring(0,1).toUpperCase() + texto.substring(1) + " Masc.m4a";
         }
         return new Respuesta(image,texto,sonidoPath);
     }
