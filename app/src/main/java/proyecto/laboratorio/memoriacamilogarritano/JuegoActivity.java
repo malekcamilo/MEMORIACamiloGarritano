@@ -77,10 +77,10 @@ public class JuegoActivity extends Activity {
         texto = texto.substring(0,1).toUpperCase() + texto.substring(1);
         String sonidoPath;
         if (VOZ_TIPO.equals(voz)) {
-            sonidoPath = "FEMENINAS/" + texto + ".m4a";
+            sonidoPath = "Femeninas/" + texto + ".m4a";
         }
         else {
-            sonidoPath = "MASCULINAS/" + texto.substring(0, 1).toUpperCase() + texto.substring(1) + ".m4a";
+            sonidoPath = "Masculinas/" + texto.substring(0, 1).toUpperCase() + texto.substring(1) + ".m4a";
         }
         return new Respuesta(image,texto,sonidoPath);
     }
@@ -169,7 +169,7 @@ public class JuegoActivity extends Activity {
             @Override
             public void onClick(View view) {
                 try {
-                    AssetFileDescriptor descriptor = getAssets().openFd("resoplido.m4a");
+                    AssetFileDescriptor descriptor = getAssets().openFd("Caballo/resoplido.m4a");
                     JuegoActivity.reproducirSonido(descriptor);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -188,7 +188,7 @@ public class JuegoActivity extends Activity {
             public void onClick(View view) {
 
                 try {
-                    AssetFileDescriptor descriptor = getAssets().openFd("relincho.m4a");
+                    AssetFileDescriptor descriptor = getAssets().openFd("Caballo/relincho.m4a");
                     JuegoActivity.reproducirSonido(descriptor);
                 } catch (IOException e) {
                     e.printStackTrace();
