@@ -1,7 +1,9 @@
 package proyecto.laboratorio.memoriacamilogarritano;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 
@@ -19,15 +21,30 @@ public class PreferencesActivity extends PreferenceActivity {
     }
 
     public static class PreferencesFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings);
+
+            //Elegir imágenes
+            /*Preference em = (Preference) findPreference("lista_imagenes");
+            em.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent intent = new Intent();
+                    intent.setType("drawable");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    int PICK_IMAGE = 1;
+                    startActivityForResult(Intent.createChooser(intent, "Elegir Imágenes"), PICK_IMAGE);
+                    return true;
+                }
+            });*/
         }
 
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            //Por ahora porque son listas
+            //Por ahora porque son listas le puse s% en el summary
            /*  Preference pref = findPreference(key);
             if (pref instanceof ListPreference) {
                 ListPreference listPref = (ListPreference) pref;
