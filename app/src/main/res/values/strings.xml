@@ -1,5 +1,16 @@
 <resources>
+    <!--Títulos-->
     <string name="app_name">MEMORIA</string>
     <string name="title_activity_settings">Ajustes</string>
-    <string name="tittle_menu_settings">Preferencias</string>
+    <string name="title_menu_settings">Preferencias</string>
+    <!--Títulos-->
+
+    <!--key preferencias-->
+    <string name="key_voz">voz</string>
+    <string name="key_dicultad">dicultad</string>
+    <string name="key_switch_tiempo">switch_tiempo</string>
+    <string name="key_tiempo">tiempo</string>
+    <string name="key_lista_imagenes">lista_imagenes</string>
+    <!--key preferencias-->
+
 </resources>

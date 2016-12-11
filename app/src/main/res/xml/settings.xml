@@ -5,7 +5,7 @@
         android:entries="@array/lista_voz"
         android:entryValues="@array/lista_voz_value"
         android:summary="%s"
-        android:key="voz"
+        android:key="@string/key_voz"
         android:title="Voz" />
 
     <ListPreference
@@ -13,29 +13,30 @@
         android:entries="@array/lista_dificultad"
         android:entryValues="@array/lista_dificultad_value"
         android:summary="%s"
-        android:key="dicultad"
+        android:key="@string/key_dicultad"
         android:title="Dificultad" />
 
     <PreferenceCategory android:title="Tiempo">
         <SwitchPreference
             android:defaultValue="false"
-            android:key="switch_tiempo" />
+            android:key="@string/key_switch_tiempo" />
         <ListPreference
             android:defaultValue="1"
             android:entries="@array/lista_tiempo"
             android:entryValues="@array/lista_tiempo_value"
             android:summary="%s"
-            android:key="tiempo"
-            android:dependency="switch_tiempo"
+            android:key="@string/key_tiempo"
+            android:dependency="@string/key_switch_tiempo"
             android:title="" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="Selección de imágenes">
         <Preference
-            android:key="lista_imagenes"
+            android:key="@string/key_lista_imagenes"
             android:summary="Imágenes seleccionadas"
             android:title="Abrir grilla de selección" />
     </PreferenceCategory>
+
     <!--Hay que crear las clases que no existe por ejemplo SeekBarPreference y ButtonPreferece
     O podríamos usar alguna librería de 3ro
     <proyecto.laboratorio.memoriacamilogarritano.SeekBarPreference />

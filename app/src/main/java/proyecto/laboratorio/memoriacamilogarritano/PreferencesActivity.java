@@ -43,12 +43,11 @@ public class PreferencesActivity extends PreferenceActivity {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
             //Por ahora porque son listas le puse s% en el summary
-           /*  Preference pref = findPreference(key);
+            /* Preference pref = findPreference(key);
             if (pref instanceof ListPreference) {
                 ListPreference listPref = (ListPreference) pref;
                 pref.setSummary(listPref.getEntry());
-            }
-            */
+            }*/
         }
 
         @Override
