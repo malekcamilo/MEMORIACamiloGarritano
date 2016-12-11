@@ -3,11 +3,13 @@ package proyecto.laboratorio.memoriacamilogarritano;
 import android.app.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -67,16 +69,18 @@ public class JuegoActivity extends Activity {
 
     private Respuesta cargarRespuesta(Integer image) {
         //cargar preferencia voz femenina o masculina. VOZ_TIPO esta hardcodeado por ahora
-        String VOZ_TIPO = "FEMENINO";
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String voz = prefs.getString("voz", "");
+        String VOZ_TIPO = "F";
 
         String texto = getResources().getResourceEntryName(image);
         texto = texto.substring(0,1).toUpperCase() + texto.substring(1);
         String sonidoPath;
-        if (VOZ_TIPO.equals("FEMENINO")) {
-             sonidoPath = "FEMENINAS/" + texto + " Fem.m4a";
+        if (VOZ_TIPO.equals(voz)) {
+            sonidoPath = "FEMENINAS/" + texto + ".m4a";
         }
         else {
-             sonidoPath = "MASCULINAS/" + texto.substring(0,1).toUpperCase() + texto.substring(1) + " Masc.m4a";
+            sonidoPath = "MASCULINAS/" + texto.substring(0, 1).toUpperCase() + texto.substring(1) + ".m4a";
         }
         return new Respuesta(image,texto,sonidoPath);
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
-        android:defaultValue="0"
+        android:defaultValue="F"
         android:entries="@array/lista_voz"
         android:entryValues="@array/lista_voz_value"
         android:summary="%s"
@@ -9,7 +9,7 @@
         android:title="Voz" />
 
     <ListPreference
-        android:defaultValue="0"
+        android:defaultValue="4"
         android:entries="@array/lista_dificultad"
         android:entryValues="@array/lista_dificultad_value"
         android:summary="%s"
@@ -21,7 +21,7 @@
             android:defaultValue="false"
             android:key="switch_tiempo" />
         <ListPreference
-            android:defaultValue="0"
+            android:defaultValue="1"
             android:entries="@array/lista_tiempo"
             android:entryValues="@array/lista_tiempo_value"
             android:summary="%s"
