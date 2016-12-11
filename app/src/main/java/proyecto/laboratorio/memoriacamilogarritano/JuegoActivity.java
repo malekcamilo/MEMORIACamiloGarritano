@@ -31,7 +31,7 @@ public class JuegoActivity extends Activity {
     private static MediaPlayer mPlayer;
     private Integer[] images = {
             R.drawable.matra, R.drawable.arriador, R.drawable.cabezada, R.drawable.bozal,R.drawable.bajomontura,
-            R.drawable.caballo, R.drawable.casco,R.drawable.cascos,R.drawable.cepillo,R.drawable.chinchondevolteo,
+            R.drawable.caballo, R.drawable.casco, R.drawable.cascos, R.drawable.cepillo, R.drawable.cinchondevolteo,
             R.drawable.cola,R.drawable.crines,R.drawable.cuerda,R.drawable.escarbavasos,R.drawable.fusta,R.drawable.montura,
             R.drawable.monturin,R.drawable.ojo,R.drawable.orejas,R.drawable.palos,R.drawable.pasto,R.drawable.pelota,
             R.drawable.rasqueta, R.drawable.riendas, R.drawable.aros, R.drawable.zanahoria
