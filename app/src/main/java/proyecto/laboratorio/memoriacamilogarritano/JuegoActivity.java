@@ -57,9 +57,6 @@ public class JuegoActivity extends Activity {
 
         Respuesta respuesta = this.cargarRespuesta((Recurso) imageViews.get(posicionCorrecta).getTag());
 
-        this.setearNuevaRespuesta(respuesta);
-
-
         for (ImageView imagenView :imageViews) {
             //Agrego las imageviews al layout
             layout.addView(imagenView);
@@ -81,7 +78,10 @@ public class JuegoActivity extends Activity {
         else {
             sonidoPath = image.getMasculina();
         }
-        return new Respuesta(image.getImagen(),texto,sonidoPath);
+
+        Respuesta respuesta = new Respuesta(image.getImagen(),texto,sonidoPath);
+        this.setearNuevaRespuesta(respuesta);
+        return respuesta;
     }
 
 
