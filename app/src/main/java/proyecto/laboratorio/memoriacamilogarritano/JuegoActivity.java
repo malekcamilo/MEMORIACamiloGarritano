@@ -29,7 +29,7 @@ import java.util.Random;
 
 public class JuegoActivity extends Activity {
     private static MediaPlayer mPlayer;
-    private Recurso[] images = {
+    private Recurso[] recursos = {
             Recurso.MATRA, Recurso.ARRIADOR, Recurso.CABEZADA, Recurso.BOZAL,Recurso.BAJO_MONTURA,
             Recurso.CABALLO, Recurso.CASCO, Recurso.CASCOS, Recurso.CEPILLO, Recurso.CINCHON_DE_VOLTEO,
             Recurso.COLA,Recurso.CRINES,Recurso.CUERDA,Recurso.ESCARBA_VASOS,Recurso.FUSTA,Recurso.MONTURA,
@@ -93,9 +93,9 @@ public class JuegoActivity extends Activity {
 
     private ArrayList<ImageView> cargarFiguras(int cantidad_figuras_mostrar) {
         ArrayList<ImageView> imagesAgregar = new ArrayList<>();
-        ArrayList<Integer> listadoIndicesImagenes = this.obtenerIndicesAlAzar(images.length,cantidad_figuras_mostrar);
+        ArrayList<Integer> listadoIndicesImagenes = this.obtenerIndicesAlAzar(recursos.length,cantidad_figuras_mostrar);
         for (Integer imagenIndice :listadoIndicesImagenes) {
-            imagesAgregar.add((ImageView) this.getImageView(images[imagenIndice]));
+            imagesAgregar.add((ImageView) this.getImageView(recursos[imagenIndice]));
         }
         return imagesAgregar;
     }
