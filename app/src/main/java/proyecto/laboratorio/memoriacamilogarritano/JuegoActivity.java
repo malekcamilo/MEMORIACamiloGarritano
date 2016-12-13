@@ -183,7 +183,7 @@ public class JuegoActivity extends Activity {
             img1.setOnClickListener(sonidoIncorrecto);
         }
 
-        ImageView img1 = listadoOpciones.get(posicionCorrecta);
+        final ImageView img1 = listadoOpciones.get(posicionCorrecta);
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -191,6 +191,7 @@ public class JuegoActivity extends Activity {
                 try {
                     AssetFileDescriptor descriptor = getAssets().openFd("Caballo/relincho.m4a");
                     JuegoActivity.reproducirSonido(descriptor);
+                    img1.setBackgroundColor(Color.BLACK);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

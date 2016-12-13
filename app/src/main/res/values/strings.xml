@@ -1,8 +1,8 @@
 <resources>
     <!--Títulos-->
-    <string name="app_name">MEMORIA</string>
+    <string name="app_name">MEMORIACamiloGarritano</string>
     <string name="title_activity_settings">Ajustes</string>
-    <string name="title_menu_settings">Preferencias</string>
+    <string name="title_menu_settings">Ajustes</string>
     <!--Títulos-->
 
     <!--key preferencias-->

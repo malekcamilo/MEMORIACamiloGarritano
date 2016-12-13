@@ -4,30 +4,30 @@
         android:defaultValue="F"
         android:entries="@array/lista_voz"
         android:entryValues="@array/lista_voz_value"
-        android:summary="%s"
         android:key="@string/key_voz"
+        android:summary="%s"
         android:title="Voz" />
 
     <ListPreference
         android:defaultValue="4"
         android:entries="@array/lista_dificultad"
         android:entryValues="@array/lista_dificultad_value"
-        android:summary="%s"
         android:key="@string/key_dicultad"
+        android:summary="%s"
         android:title="Dificultad" />
 
     <PreferenceCategory android:title="Tiempo">
         <SwitchPreference
+            android:title="Habilitar/Deshabilitar Tiempo"
             android:defaultValue="false"
             android:key="@string/key_switch_tiempo" />
         <ListPreference
             android:defaultValue="1"
+            android:dependency="@string/key_switch_tiempo"
             android:entries="@array/lista_tiempo"
             android:entryValues="@array/lista_tiempo_value"
-            android:summary="%s"
             android:key="@string/key_tiempo"
-            android:dependency="@string/key_switch_tiempo"
-            android:title="" />
+            android:summary="%s" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="Selección de imágenes">
