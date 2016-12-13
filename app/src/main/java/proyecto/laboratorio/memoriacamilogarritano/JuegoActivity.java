@@ -130,7 +130,7 @@ public class JuegoActivity extends Activity {
         imageView.setImageResource(imageId.getImagen());
         imageView.setTag(imageId);
 
-        imageView.setPadding(2,1,2,1);
+        imageView.setPadding(8, 8, 8, 8);
         imageView.setBackgroundColor(Color.GRAY);
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0,0);
@@ -168,11 +168,17 @@ public class JuegoActivity extends Activity {
 
         View.OnClickListener sonidoIncorrecto  = new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 try {
                     AssetFileDescriptor descriptor = getAssets().openFd("Caballo/resoplido.m4a");
                     JuegoActivity.reproducirSonido(descriptor);
                     view.setBackgroundColor(Color.RED);
+                    view.postDelayed(new Runnable() {
+                        public void run() {
+                            view.setBackgroundColor(Color.GRAY);
+                        }
+                    }, 1000);
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
