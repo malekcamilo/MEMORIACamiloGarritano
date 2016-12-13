@@ -63,7 +63,24 @@ public class JuegoActivity extends Activity {
         }
 
         this.eventoSonidosOpciones(imageViews,posicionCorrecta);
+
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        int pref_nivel = prefs.getInt("dificultad", 4);
+        TextView text_nivel= (TextView) findViewById(R.id.textViewDificultad);
+        switch (pref_nivel){
+            case 1: text_nivel.setText("Dificultad: Inicial");
+                break;
+            case 2: text_nivel.setText("Dificultad: Medio");
+                break;
+            case 3: text_nivel.setText("Dificultad: Avanzado");
+                break;
+            case 4: text_nivel.setText("Dificultad: Experto");
+                break;
+        }
+
     }
+
 
     private Respuesta cargarRespuesta(Recurso image) {
         //cargar preferencia voz femenina o masculina. VOZ_TIPO esta hardcodeado por ahora
@@ -243,5 +260,17 @@ public class JuegoActivity extends Activity {
         return (new Random()).nextInt(maximo+1);
     }
 
-
+    private String getDificultadStr(int dificultad) {
+        switch (dificultad) {
+            case 1:
+                return "Inicial";
+            case 2:
+                return "Medio";
+            case 3:
+                return "Avanzado";
+            case 4:
+                return "Experto";
+            default: return "Desconocido";
+        }
+    }
 }
