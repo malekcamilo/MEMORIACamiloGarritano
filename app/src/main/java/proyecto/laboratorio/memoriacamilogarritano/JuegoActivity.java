@@ -135,7 +135,7 @@ public class JuegoActivity extends Activity {
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0,0);
         layoutParams.width  = (int) (width * 0.25);
-        layoutParams.height  = height;
+        layoutParams.height  = layoutParams.width;
 
         Log.v("widthImagen", String.valueOf(layoutParams.width));
         imageView.setLayoutParams(layoutParams);
@@ -172,6 +172,7 @@ public class JuegoActivity extends Activity {
                 try {
                     AssetFileDescriptor descriptor = getAssets().openFd("Caballo/resoplido.m4a");
                     JuegoActivity.reproducirSonido(descriptor);
+                    view.setBackgroundColor(Color.RED);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -191,7 +192,7 @@ public class JuegoActivity extends Activity {
                 try {
                     AssetFileDescriptor descriptor = getAssets().openFd("Caballo/relincho.m4a");
                     JuegoActivity.reproducirSonido(descriptor);
-                    img1.setBackgroundColor(Color.BLACK);
+                    view.setBackgroundColor(Color.rgb(0,173,56));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
