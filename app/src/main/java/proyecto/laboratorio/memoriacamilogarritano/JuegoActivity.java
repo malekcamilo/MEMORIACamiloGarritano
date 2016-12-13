@@ -44,8 +44,9 @@ public class JuegoActivity extends Activity {
         LinearLayout layout = (LinearLayout) findViewById(R.id.layoutRespuestas);
         ArrayList<ImageView> imageViews = null;
 
-        //CANTIDAD_FIGURAS_MOSTRAR hardcodeado por ahora
+        //CANTIDAD_FIGURAS_MOSTRAR Y CANTIDAD_FIGURAS_SELECCIONADAS hardcodeados por ahora
         int CANTIDAD_FIGURAS_MOSTRAR = 4;
+        Integer CANTIDAD_FIGURAS_SELECCIONADAS = 26;
 
         imageViews = this.cargarFiguras(CANTIDAD_FIGURAS_MOSTRAR);
         //posicionCorrecta tiene la posicion de la imagen correcta del 0 al (CANTIDAD_FIGURAS_MOSTRAR - 1)
@@ -78,6 +79,8 @@ public class JuegoActivity extends Activity {
             case 4: text_nivel.setText("Dificultad: Experto");
                 break;
         }
+
+        ((TextView) findViewById(R.id.textViewProgreso)).setText("1/"+ CANTIDAD_FIGURAS_SELECCIONADAS.toString());
 
     }
 
