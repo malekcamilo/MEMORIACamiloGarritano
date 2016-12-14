@@ -7,7 +7,7 @@
 
     <!--key preferencias-->
     <string name="key_voz">voz</string>
-    <string name="key_dicultad">dicultad</string>
+    <string name="key_dificultad">dificultad</string>
     <string name="key_switch_tiempo">switch_tiempo</string>
     <string name="key_tiempo">tiempo</string>
     <string name="key_lista_imagenes">lista_imagenes</string>

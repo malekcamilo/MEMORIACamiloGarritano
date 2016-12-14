@@ -67,18 +67,8 @@ public class JuegoActivity extends Activity {
 
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        int pref_nivel = prefs.getInt("dificultad", 4);
         TextView text_nivel= (TextView) findViewById(R.id.textViewDificultad);
-        switch (pref_nivel){
-            case 1: text_nivel.setText("Dificultad: Inicial");
-                break;
-            case 2: text_nivel.setText("Dificultad: Medio");
-                break;
-            case 3: text_nivel.setText("Dificultad: Avanzado");
-                break;
-            case 4: text_nivel.setText("Dificultad: Experto");
-                break;
-        }
+        text_nivel.setText("Dificultad: " + this.getDificultadStr(prefs.getString("dificultad", "")));
 
         ((TextView) findViewById(R.id.textViewProgreso)).setText("1/"+ CANTIDAD_FIGURAS_SELECCIONADAS.toString());
 
@@ -263,15 +253,15 @@ public class JuegoActivity extends Activity {
         return (new Random()).nextInt(maximo+1);
     }
 
-    private String getDificultadStr(int dificultad) {
+    private String getDificultadStr(String dificultad) {
         switch (dificultad) {
-            case 1:
+            case "1":
                 return "Inicial";
-            case 2:
+            case "2":
                 return "Medio";
-            case 3:
+            case "3":
                 return "Avanzado";
-            case 4:
+            case "4":
                 return "Experto";
             default: return "Desconocido";
         }

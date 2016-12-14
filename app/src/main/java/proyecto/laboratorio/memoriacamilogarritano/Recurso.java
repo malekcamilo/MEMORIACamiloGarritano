@@ -27,7 +27,7 @@ public enum Recurso {
     OREJAS("Orejas", R.drawable.orejas, "Femeninas/Orejas.m4a", "Masculinas/Orejas.m4a"),
     PALOS("Palos", R.drawable.palos, "Femeninas/Palos.m4a", "Masculinas/Palos.m4a"),
     PASTO("Pasto", R.drawable.pasto, "Femeninas/Pasto.m4a", "Masculinas/Pasto.m4a"),
-    PELOTA("Pelora", R.drawable.pelota, "Femeninas/Pelota.m4a", "Masculinas/Pelota.m4a"),
+    PELOTA("Pelota", R.drawable.pelota, "Femeninas/Pelota.m4a", "Masculinas/Pelota.m4a"),
     RASQUETA("Rasqueta", R.drawable.rasqueta, "Femeninas/Rasqueta.m4a", "Masculinas/Rasqueta.m4a"),
     RIENDAS("Riendas", R.drawable.riendas, "Femeninas/Riendas.m4a", "Masculinas/Riendas.m4a"),
     ZANAHORIA("Zanahoria", R.drawable.zanahoria, "Femeninas/Zanahoria.m4a", "Masculinas/Zanahoria.m4a");
