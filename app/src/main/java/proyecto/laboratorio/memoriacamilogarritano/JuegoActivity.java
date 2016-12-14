@@ -68,7 +68,7 @@ public class JuegoActivity extends Activity {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         TextView text_nivel= (TextView) findViewById(R.id.textViewDificultad);
-        text_nivel.setText("Dificultad: " + this.getDificultadStr(prefs.getString("dificultad", "")));
+        text_nivel.setText("Dificultad: " + this.getDificultadStr(prefs.getString("dificultad", "4")));
 
         ((TextView) findViewById(R.id.textViewProgreso)).setText("1/"+ CANTIDAD_FIGURAS_SELECCIONADAS.toString());
 
@@ -78,7 +78,7 @@ public class JuegoActivity extends Activity {
     private Respuesta cargarRespuesta(Recurso image) {
         //cargar preferencia voz femenina o masculina. VOZ_TIPO esta hardcodeado por ahora
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String voz = prefs.getString("voz", "");
+        String voz = prefs.getString("voz", "F");
         String VOZ_TIPO = "F";
         String texto = image.getDescripcion();
         String sonidoPath;
