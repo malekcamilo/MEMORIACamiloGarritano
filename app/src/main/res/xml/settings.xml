@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fragment="proyecto.laboratorio.memoriacamilogarritano.PreferencesActivity$PreferencesFragment">
     <ListPreference
         android:defaultValue="F"
         android:entries="@array/lista_voz"
@@ -16,7 +17,6 @@
         android:summary="%s"
         android:title="Dificultad" />
 
-    <PreferenceCategory android:title="Tiempo">
         <SwitchPreference
             android:title="Habilitar/Deshabilitar Tiempo"
             android:defaultValue="false"
@@ -28,7 +28,6 @@
             android:entryValues="@array/lista_tiempo_value"
             android:key="@string/key_tiempo"
             android:summary="%s" />
-    </PreferenceCategory>
 
     <PreferenceCategory android:title="Selección de imágenes">
         <Preference

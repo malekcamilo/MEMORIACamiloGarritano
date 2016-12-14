@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 
+import java.util.List;
+
 /**
  * Created by malek on 04/12/16.
  */
@@ -14,8 +16,20 @@ public class PreferencesActivity extends PreferenceActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //PreferenceManager.setDefaultValues(this, R.xml.settings, false);
+/*
         getFragmentManager().beginTransaction().replace(android.R.id.content, new PreferencesFragment()).commit();
+*/
 
+    }
+
+    @Override
+    public void onBuildHeaders(List<Header> target) {
+        loadHeadersFromResource(R.xml.settings_headers, target);
+    }
+
+    @Override
+    protected boolean isValidFragment(String fragmentName) {
+        return true;
     }
 
     public static class PreferencesFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
