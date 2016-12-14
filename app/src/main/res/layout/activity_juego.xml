@@ -52,17 +52,16 @@
             android:textSize="60sp"
             android:textStyle="bold"
             android:typeface="serif"
-            android:gravity="center_horizontal"
-            android:layout_toStartOf="@+id/imageViewParlante"
-            android:layout_alignParentStart="true" />
+            android:layout_gravity="center_horizontal"
+            android:layout_toStartOf="@+id/imageViewParlante" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="72dp"
+            android:paddingLeft="10dp"
+            android:layout_height="72dp"
             android:src="@drawable/speaker_black"
             android:id="@+id/imageViewParlante"
-            android:layout_alignParentEnd="true"
-            android:layout_weight="1.00" />
+            android:layout_alignParentEnd="true" />
 
     </LinearLayout>
 
