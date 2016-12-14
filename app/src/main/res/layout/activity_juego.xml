@@ -35,14 +35,20 @@
             />
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayoutInfo"
+        android:id="@+id/relativeLayout1">
     <LinearLayout
+        android:gravity="center"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:layout_below="@id/linearLayoutInfo"
         android:id="@+id/linearLayout1">
 
         <TextView
@@ -64,13 +70,13 @@
             android:layout_alignParentEnd="true" />
 
     </LinearLayout>
-
+    </RelativeLayout>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="false"
-        android:layout_below="@id/linearLayout1"
+        android:layout_below="@id/relativeLayout1"
         android:id="@+id/layoutRespuestas"
         android:gravity="center_vertical|center_horizontal">
 
