@@ -188,6 +188,7 @@ public class JuegoActivity extends Activity {
                             view.setBackgroundColor(Color.GRAY);
                         }
                     }, 1000);
+                    descriptor.close();
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -209,6 +210,7 @@ public class JuegoActivity extends Activity {
                     AssetFileDescriptor descriptor = getAssets().openFd("Caballo/relincho.m4a");
                     JuegoActivity.reproducirSonido(descriptor);
                     view.setBackgroundColor(Color.rgb(0,173,56));
+                    descriptor.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
