@@ -1,84 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_juego"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingTop="5dp"
-    tools:context="proyecto.laboratorio.memoriacamilogarritano.JuegoActivity"
-    android:background="@android:color/darker_gray">
+    tools:context="proyecto.laboratorio.memoriacamilogarritano.JuegoActivity">
+
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/linearLayoutInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:id="@+id/linearLayoutInfo">
+        android:paddingRight="10dp">
 
         <TextView
+            android:id="@+id/textViewDificultad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:id="@+id/textViewDificultad"
             android:layout_alignParentStart="true"
             android:layout_weight="1"
-            />
+            android:textSize="20sp" />
+
         <TextView
+            android:id="@+id/textViewProgreso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:id="@+id/textViewProgreso"
             android:layout_alignParentEnd="true"
             android:text="1/26"
-            />
+            android:textSize="20sp" />
 
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linearLayoutInfo"
-        android:id="@+id/relativeLayout1">
-    <LinearLayout
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:id="@+id/linearLayout1">
+        android:layout_below="@id/linearLayoutInfo">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:textSize="60sp"
-            android:textStyle="bold"
-            android:typeface="serif"
-            android:layout_gravity="center_horizontal"
-            android:layout_toStartOf="@+id/imageViewParlante" />
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
 
-        <ImageView
-            android:layout_width="72dp"
-            android:paddingLeft="10dp"
-            android:layout_height="72dp"
-            android:src="@drawable/speaker_black"
-            android:id="@+id/imageViewParlante"
-            android:layout_alignParentEnd="true" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:typeface="serif" />
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/imageViewParlante"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:paddingLeft="10dp"
+                android:src="@drawable/speaker_black" />
+
+        </LinearLayout>
     </RelativeLayout>
+
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/layoutRespuestas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="false"
         android:layout_below="@id/relativeLayout1"
-        android:id="@+id/layoutRespuestas"
-        android:gravity="center_vertical|center_horizontal">
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal">
 
         <!--ImageView
             android:layout_width="wrap_content"
