@@ -49,11 +49,18 @@ public class JuegoActivity extends Activity {
     }
 
     private Integer jugar(LinearLayout layout) {
-        ArrayList<ImageView> imageViews = null;
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        TextView text_nivel= (TextView) findViewById(R.id.textViewDificultad);
+        text_nivel.setText("Dificultad: " + this.getDificultadStr(prefs.getString("dificultad", "4")));
+
+
         //CANTIDAD_FIGURAS_MOSTRAR Y CANTIDAD_FIGURAS_SELECCIONADAS hardcodeados por ahora
-        int CANTIDAD_FIGURAS_MOSTRAR = 1;
+        int CANTIDAD_FIGURAS_MOSTRAR = this.getDificultadCantidadImagenes(prefs.getString("dificultad", "4"));
         Integer CANTIDAD_FIGURAS_SELECCIONADAS = 26;
 
+
+        ArrayList<ImageView> imageViews = null;
         imageViews = this.cargarFiguras(CANTIDAD_FIGURAS_MOSTRAR);
         //posicionCorrecta tiene la posicion de la imagen correcta del 0 al (CANTIDAD_FIGURAS_MOSTRAR - 1)
         int posicionCorrecta = this.getRandomInteger(CANTIDAD_FIGURAS_MOSTRAR-1);
@@ -71,11 +78,8 @@ public class JuegoActivity extends Activity {
 
         this.eventoSonidosOpciones(imageViews,posicionCorrecta);
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        TextView text_nivel= (TextView) findViewById(R.id.textViewDificultad);
-        text_nivel.setText("Dificultad: " + this.getDificultadStr(prefs.getString("dificultad", "4")));
-
         ((TextView) findViewById(R.id.textViewProgreso)).setText("1/"+ CANTIDAD_FIGURAS_SELECCIONADAS.toString());
+
         return 1;
     }
 
@@ -268,6 +272,20 @@ public class JuegoActivity extends Activity {
             case "4":
                 return "Experto";
             default: return "Desconocido";
+        }
+    }
+
+    private Integer getDificultadCantidadImagenes(String dificultad) {
+        switch (dificultad) {
+            case "1":
+                return 1;
+            case "2":
+                return 2;
+            case "3":
+                return 3;
+            case "4":
+                return 4;
+            default: return 4;
         }
     }
 }
