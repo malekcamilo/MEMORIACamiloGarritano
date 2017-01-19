@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -42,10 +43,15 @@ public class JuegoActivity extends Activity {
         mPlayer = new MediaPlayer();
         setContentView(R.layout.activity_juego);
         LinearLayout layout = (LinearLayout) findViewById(R.id.layoutRespuestas);
-        ArrayList<ImageView> imageViews = null;
 
+        this.jugar(layout);
+
+    }
+
+    private Integer jugar(LinearLayout layout) {
+        ArrayList<ImageView> imageViews = null;
         //CANTIDAD_FIGURAS_MOSTRAR Y CANTIDAD_FIGURAS_SELECCIONADAS hardcodeados por ahora
-        int CANTIDAD_FIGURAS_MOSTRAR = 4;
+        int CANTIDAD_FIGURAS_MOSTRAR = 1;
         Integer CANTIDAD_FIGURAS_SELECCIONADAS = 26;
 
         imageViews = this.cargarFiguras(CANTIDAD_FIGURAS_MOSTRAR);
@@ -65,13 +71,12 @@ public class JuegoActivity extends Activity {
 
         this.eventoSonidosOpciones(imageViews,posicionCorrecta);
 
-
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         TextView text_nivel= (TextView) findViewById(R.id.textViewDificultad);
         text_nivel.setText("Dificultad: " + this.getDificultadStr(prefs.getString("dificultad", "4")));
 
         ((TextView) findViewById(R.id.textViewProgreso)).setText("1/"+ CANTIDAD_FIGURAS_SELECCIONADAS.toString());
-
+        return 1;
     }
 
 
@@ -102,12 +107,27 @@ public class JuegoActivity extends Activity {
     }
 
     private ArrayList<ImageView> cargarFiguras(int cantidad_figuras_mostrar) {
+        Dimension dim = this.cargarDimension(cantidad_figuras_mostrar);
         ArrayList<ImageView> imagesAgregar = new ArrayList<>();
         ArrayList<Integer> listadoIndicesImagenes = this.obtenerIndicesAlAzar(recursos.length,cantidad_figuras_mostrar);
         for (Integer imagenIndice :listadoIndicesImagenes) {
-            imagesAgregar.add((ImageView) this.getImageView(recursos[imagenIndice]));
+            imagesAgregar.add((ImageView) this.getImageView(recursos[imagenIndice],dim));
         }
         return imagesAgregar;
+    }
+
+    private Dimension cargarDimension(int cantidad_figuras_mostrar) {
+        //Usa objeto dimension pero por ahora el height es igual que el width, asi que con un valor solo alcanzarìa.
+        //0.33 queda bien. 0.50 queda mal, ahi habria que hacerla con menos height pero perderia la proporcion.
+        switch (cantidad_figuras_mostrar) {
+            case 1:
+            case 2:
+            case 3:
+                return new Dimension(0.33,0.33);
+            case 4:
+            default:
+                return new Dimension(0.25,0.25);
+        }
     }
 
     private ArrayList<Integer> obtenerIndicesAlAzar(int len, int cantidad) {
@@ -125,7 +145,7 @@ public class JuegoActivity extends Activity {
     }
 
 
-    private View getImageView(Recurso imageId){
+    private View getImageView(Recurso imageId, Dimension dim){
         //LinearLayout layout = new LinearLayout(getApplicationContext());
         //layout.setLayoutParams(new HorizontalScrollView.LayoutParams(250, 250));
         //layout.setGravity(Gravity.CENTER);
@@ -144,7 +164,8 @@ public class JuegoActivity extends Activity {
         imageView.setBackgroundColor(Color.GRAY);
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0,0);
-        layoutParams.width  = (int) (width * 0.25);
+        //layoutParams.width  = (int) (width * 0.25);
+        layoutParams.width  = (int) (width * dim.getWidth());
         layoutParams.height  = layoutParams.width;
 
         Log.v("widthImagen", String.valueOf(layoutParams.width));
