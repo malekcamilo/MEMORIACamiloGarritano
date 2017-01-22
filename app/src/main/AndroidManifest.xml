@@ -19,10 +19,11 @@
         <activity
             android:name=".PreferencesActivity"
             android:label="@string/title_activity_settings"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".JuegoActivity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
+        <activity android:name=".GrillaActivity"></activity>
     </application>
 
 </manifest>
