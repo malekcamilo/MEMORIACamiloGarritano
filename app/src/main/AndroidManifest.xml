@@ -24,6 +24,7 @@
             android:name=".JuegoActivity"
             android:screenOrientation="landscape" />
         <activity android:name=".GrillaActivity"></activity>
+        <activity android:name=".GrillaActivity2"></activity>
     </application>
 
 </manifest>
