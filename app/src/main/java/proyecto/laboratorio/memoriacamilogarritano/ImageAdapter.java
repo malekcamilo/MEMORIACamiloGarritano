@@ -18,7 +18,7 @@ public class ImageAdapter extends BaseAdapter { private Context mContext;
     }
 
     public int getCount() {
-        return mThumbIds.length;
+        return recursos.length;
     }
 
     public Object getItem(int position) {
@@ -42,22 +42,19 @@ public class ImageAdapter extends BaseAdapter { private Context mContext;
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(mThumbIds[position]);
+        imageView.setImageResource(recursos[position].getImagen());
+        imageView.setTag(recursos[position].getImagen());
         return imageView;
     }
 
     // references to our images
-    private Integer[] mThumbIds = {
-            R.drawable.arriador, R.drawable.aros,
-            R.drawable.bozal, R.drawable.bajomontura,
-            R.drawable.caballo, R.drawable.cabezada,
-            R.drawable.casco, R.drawable.cascos,
-            R.drawable.cepillo, R.drawable.cinchondevolteo,
-            R.drawable.cola, R.drawable.crines,
-            R.drawable.escarbavasos, R.drawable.cuerda,
-            R.drawable.fusta, R.drawable.matra,
-            R.drawable.montura, R.drawable.monturin,
-            R.drawable.ojo, R.drawable.palos,
-            R.drawable.pasto, R.drawable.pelota
+
+    private Recurso[] recursos = {
+            Recurso.MATRA, Recurso.ARRIADOR, Recurso.CABEZADA, Recurso.BOZAL,Recurso.BAJO_MONTURA,
+            Recurso.CABALLO, Recurso.CASCO, Recurso.CASCOS, Recurso.CEPILLO, Recurso.CINCHON_DE_VOLTEO,
+            Recurso.COLA,Recurso.CRINES,Recurso.CUERDA,Recurso.ESCARBA_VASOS,Recurso.FUSTA,Recurso.MONTURA,
+            Recurso.MONTURIN,Recurso.OJOS,Recurso.OREJAS,Recurso.PALOS,Recurso.PASTO,Recurso.PELOTA,
+            Recurso.RASQUETA, Recurso.RIENDAS, Recurso.AROS, Recurso.ZANAHORIA
+
     };
 }
