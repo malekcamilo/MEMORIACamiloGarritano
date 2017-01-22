@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -15,7 +16,9 @@ import java.util.Set;
 
 public class GrillaActivity extends Activity {
 
-    Set<String> imagenesSeleccionadas = new HashSet<>();
+
+    static Set<String> imagenesSeleccionadas = new HashSet<>();
+
     @Override
 
         protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +38,15 @@ public class GrillaActivity extends Activity {
                 else {
                     Toast.makeText(GrillaActivity.this, "Imagen Habilitada", Toast.LENGTH_SHORT).show();
                     imagenesSeleccionadas.add(v.getTag().toString());
+                    Log.v("aaa", String.valueOf(imagenesSeleccionadas.size()));
+
                     v.setBackgroundColor(Color.rgb(28,17,188));
                 }
 
             }
 
         });
+
         this.guardarPref();
 
     }
@@ -49,8 +55,10 @@ public class GrillaActivity extends Activity {
         SharedPreferences.Editor editor = settings.edit();
         editor.remove("imagenesSeleccionadas");
         editor.apply();
-        editor.putStringSet("imagenesSeleccionadas", imagenesSeleccionadas);
+        editor.putStringSet("imagenesSeleccionadas", this.imagenesSeleccionadas);
         editor.apply();
+        editor.commit();
+        Log.v("aaa", String.valueOf(this.imagenesSeleccionadas.size()));
     }
 
 

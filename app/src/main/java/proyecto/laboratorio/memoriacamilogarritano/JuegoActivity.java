@@ -26,7 +26,10 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Random;
+import java.util.Set;
 
 public class JuegoActivity extends Activity {
     private static MediaPlayer mPlayer;
@@ -37,6 +40,8 @@ public class JuegoActivity extends Activity {
             Recurso.MONTURIN,Recurso.OJOS,Recurso.OREJAS,Recurso.PALOS,Recurso.PASTO,Recurso.PELOTA,
             Recurso.RASQUETA, Recurso.RIENDAS, Recurso.AROS, Recurso.ZANAHORIA
     };
+    private ArrayList<Recurso> recursosUsados;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +59,11 @@ public class JuegoActivity extends Activity {
         TextView text_nivel= (TextView) findViewById(R.id.textViewDificultad);
         text_nivel.setText("Dificultad: " + this.getDificultadStr(prefs.getString("dificultad", "4")));
 
-
+        recursosUsados = this.cargarRecursosUsados();
+        
         //CANTIDAD_FIGURAS_MOSTRAR Y CANTIDAD_FIGURAS_SELECCIONADAS hardcodeados por ahora
         int CANTIDAD_FIGURAS_MOSTRAR = this.getDificultadCantidadImagenes(prefs.getString("dificultad", "4"));
-        Integer CANTIDAD_FIGURAS_SELECCIONADAS = 26;
+        Integer CANTIDAD_FIGURAS_SELECCIONADAS = recursosUsados.size();
 
 
         ArrayList<ImageView> imageViews = null;
@@ -81,6 +87,26 @@ public class JuegoActivity extends Activity {
         ((TextView) findViewById(R.id.textViewProgreso)).setText("1/"+ CANTIDAD_FIGURAS_SELECCIONADAS.toString());
 
         return 1;
+    }
+
+    private ArrayList<Recurso> cargarRecursosUsados() {
+
+        SharedPreferences settings = getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+
+        Set<String> r =  settings.getStringSet("imagenesSeleccionadas", new HashSet<String>());
+        ArrayList<Recurso> res = new ArrayList<>();
+        if (r != null) {
+
+            for (Recurso recurso :recursos) {
+                if (r.contains(String.valueOf(recurso.getImagen()))) {
+                    res.add(recurso);
+                }
+            }
+
+        }
+
+        return res;
     }
 
 
@@ -113,9 +139,9 @@ public class JuegoActivity extends Activity {
     private ArrayList<ImageView> cargarFiguras(int cantidad_figuras_mostrar) {
         Dimension dim = this.cargarDimension(cantidad_figuras_mostrar);
         ArrayList<ImageView> imagesAgregar = new ArrayList<>();
-        ArrayList<Integer> listadoIndicesImagenes = this.obtenerIndicesAlAzar(recursos.length,cantidad_figuras_mostrar);
+        ArrayList<Integer> listadoIndicesImagenes = this.obtenerIndicesAlAzar(recursosUsados.size(),cantidad_figuras_mostrar);
         for (Integer imagenIndice :listadoIndicesImagenes) {
-            imagesAgregar.add((ImageView) this.getImageView(recursos[imagenIndice],dim));
+            imagesAgregar.add((ImageView) this.getImageView(recursosUsados.get(imagenIndice),dim));
         }
         return imagesAgregar;
     }
