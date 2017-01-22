@@ -65,6 +65,10 @@ public class JuegoActivity extends Activity {
         int CANTIDAD_FIGURAS_MOSTRAR = this.getDificultadCantidadImagenes(prefs.getString("dificultad", "4"));
         Integer CANTIDAD_FIGURAS_SELECCIONADAS = recursosUsados.size();
 
+        CANTIDAD_FIGURAS_MOSTRAR = Math.min(CANTIDAD_FIGURAS_MOSTRAR,CANTIDAD_FIGURAS_SELECCIONADAS);
+
+        Log.v("cant imagenes usadas",String.valueOf(CANTIDAD_FIGURAS_SELECCIONADAS));
+
 
         ArrayList<ImageView> imageViews = null;
         imageViews = this.cargarFiguras(CANTIDAD_FIGURAS_MOSTRAR);
@@ -97,7 +101,6 @@ public class JuegoActivity extends Activity {
         Set<String> r =  settings.getStringSet("imagenesSeleccionadas", new HashSet<String>());
         ArrayList<Recurso> res = new ArrayList<>();
         if (r != null) {
-
             for (Recurso recurso :recursos) {
                 if (r.contains(String.valueOf(recurso.getImagen()))) {
                     res.add(recurso);
@@ -105,7 +108,7 @@ public class JuegoActivity extends Activity {
             }
 
         }
-
+        Log.v("borrar",String.valueOf(res.size()));
         return res;
     }
 

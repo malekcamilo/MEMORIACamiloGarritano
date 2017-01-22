@@ -38,28 +38,32 @@ public class GrillaActivity extends Activity {
                 else {
                     Toast.makeText(GrillaActivity.this, "Imagen Habilitada", Toast.LENGTH_SHORT).show();
                     imagenesSeleccionadas.add(v.getTag().toString());
-                    Log.v("aaa", String.valueOf(imagenesSeleccionadas.size()));
-
                     v.setBackgroundColor(Color.rgb(28,17,188));
                 }
+
+                this.guardarPref();
+
+            }
+
+            private void guardarPref() {
+                SharedPreferences settings = getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.remove("imagenesSeleccionadas");
+                editor.apply();
+                editor.putStringSet("imagenesSeleccionadas", imagenesSeleccionadas);
+                editor.apply();
+                Log.v("guardado el valor",String.valueOf(imagenesSeleccionadas.size()));
+                editor.commit();
 
             }
 
         });
 
-        this.guardarPref();
+
 
     }
-    private void guardarPref() {
-        SharedPreferences settings = getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.remove("imagenesSeleccionadas");
-        editor.apply();
-        editor.putStringSet("imagenesSeleccionadas", this.imagenesSeleccionadas);
-        editor.apply();
-        editor.commit();
-        Log.v("aaa", String.valueOf(this.imagenesSeleccionadas.size()));
-    }
+
+
 
 
 }
