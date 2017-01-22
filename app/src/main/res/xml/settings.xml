@@ -33,7 +33,11 @@
         <Preference
             android:key="@string/key_lista_imagenes"
             android:summary="Imágenes seleccionadas"
-            android:title="Abrir grilla de selección" />
+            android:title="Abrir grilla de selección">
+            <intent android:action="android.intent.action.VIEW"
+            android:targetPackage="proyecto.laboratorio.memoriacamilogarritano"
+            android:targetClass="proyecto.laboratorio.memoriacamilogarritano.GrillaActivity"/>
+        </Preference>
     </PreferenceCategory>
 
     <!--Hay que crear las clases que no existe por ejemplo SeekBarPreference y ButtonPreferece
