@@ -41,6 +41,7 @@ public class ImageAdapter extends BaseAdapter { private Context mContext;
             imageView.setPadding(8, 8, 8, 8);
         } else {
             imageView = (ImageView) convertView;
+            imageView.setBackgroundColor(Color.TRANSPARENT);
         }
 
         imageView.setImageResource(recursos[position].getImagen());

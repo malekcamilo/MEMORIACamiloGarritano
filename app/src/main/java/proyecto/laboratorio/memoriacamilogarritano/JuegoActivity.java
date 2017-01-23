@@ -49,22 +49,21 @@ public class JuegoActivity extends Activity {
         setContentView(R.layout.activity_juego);
         LinearLayout layout = (LinearLayout) findViewById(R.id.layoutRespuestas);
 
-        this.jugar(layout);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String dificultad = prefs.getString("dificultad", "4");
+
+        TextView text_nivel= (TextView) findViewById(R.id.textViewDificultad);
+        text_nivel.setText("Dificultad: " + this.getDificultadStr(dificultad));
+
+        recursosUsados = this.cargarRecursosUsados();
+
+        this.armarJuego(layout,dificultad,0,recursosUsados.size());
 
     }
 
-    private Integer jugar(LinearLayout layout) {
+    private Integer armarJuego(LinearLayout layout,String dificultad, int cantidadRespondidas,Integer CANTIDAD_FIGURAS_SELECCIONADAS) {
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        TextView text_nivel= (TextView) findViewById(R.id.textViewDificultad);
-        text_nivel.setText("Dificultad: " + this.getDificultadStr(prefs.getString("dificultad", "4")));
-
-        recursosUsados = this.cargarRecursosUsados();
-        
-        //CANTIDAD_FIGURAS_MOSTRAR Y CANTIDAD_FIGURAS_SELECCIONADAS hardcodeados por ahora
-        int CANTIDAD_FIGURAS_MOSTRAR = this.getDificultadCantidadImagenes(prefs.getString("dificultad", "4"));
-        Integer CANTIDAD_FIGURAS_SELECCIONADAS = recursosUsados.size();
-
+        int CANTIDAD_FIGURAS_MOSTRAR = this.getDificultadCantidadImagenes(dificultad);
         CANTIDAD_FIGURAS_MOSTRAR = Math.min(CANTIDAD_FIGURAS_MOSTRAR,CANTIDAD_FIGURAS_SELECCIONADAS);
 
         Log.v("cant imagenes usadas",String.valueOf(CANTIDAD_FIGURAS_SELECCIONADAS));
@@ -90,7 +89,7 @@ public class JuegoActivity extends Activity {
 
         ((TextView) findViewById(R.id.textViewProgreso)).setText("1/"+ CANTIDAD_FIGURAS_SELECCIONADAS.toString());
 
-        return 1;
+        return cantidadRespondidas+1;
     }
 
     private ArrayList<Recurso> cargarRecursosUsados() {
