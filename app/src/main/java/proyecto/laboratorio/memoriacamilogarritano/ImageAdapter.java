@@ -1,6 +1,7 @@
 package proyecto.laboratorio.memoriacamilogarritano;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -44,6 +45,9 @@ public class ImageAdapter extends BaseAdapter { private Context mContext;
 
         imageView.setImageResource(recursos[position].getImagen());
         imageView.setTag(recursos[position].getImagen());
+        if (GrillaActivity.imagenesSeleccionadas.contains(String.valueOf(recursos[position].getImagen()))) {
+            imageView.setBackgroundColor(this.getColorMarcado());
+        }
         return imageView;
     }
 
@@ -57,4 +61,9 @@ public class ImageAdapter extends BaseAdapter { private Context mContext;
             Recurso.RASQUETA, Recurso.RIENDAS, Recurso.AROS, Recurso.ZANAHORIA
 
     };
+
+
+    public int getColorMarcado() {
+        return Color.rgb(28,17,188);
+    }
 }

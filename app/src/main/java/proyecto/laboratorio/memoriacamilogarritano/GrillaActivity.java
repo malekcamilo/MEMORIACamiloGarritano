@@ -26,10 +26,12 @@ public class GrillaActivity extends Activity {
         setContentView(R.layout.activity_grilla);
         GridView gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(new ImageAdapter(this));
+        final ImageAdapter c = (ImageAdapter) gridview.getAdapter();
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
+                Log.v("tag",v.getTag().toString());
                 if (imagenesSeleccionadas.contains(v.getTag().toString())) {
                     Toast.makeText(GrillaActivity.this, "Imagen Inhabilitada", Toast.LENGTH_SHORT).show();
                     imagenesSeleccionadas.remove(v.getTag().toString());
@@ -38,27 +40,31 @@ public class GrillaActivity extends Activity {
                 else {
                     Toast.makeText(GrillaActivity.this, "Imagen Habilitada", Toast.LENGTH_SHORT).show();
                     imagenesSeleccionadas.add(v.getTag().toString());
-                    v.setBackgroundColor(Color.rgb(28,17,188));
+                    v.setBackgroundColor(c.getColorMarcado());
                 }
-
-                this.guardarPref();
-
-            }
-
-            private void guardarPref() {
-                SharedPreferences settings = getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.remove("imagenesSeleccionadas");
-                editor.apply();
-                editor.putStringSet("imagenesSeleccionadas", imagenesSeleccionadas);
-                editor.apply();
-                Log.v("guardado el valor",String.valueOf(imagenesSeleccionadas.size()));
-                editor.commit();
 
             }
 
         });
 
+    }
+
+
+    protected void onPause() {
+        super.onPause();
+        this.guardarPref();
+    }
+
+
+    void guardarPref() {
+        SharedPreferences settings = getApplicationContext().getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.remove("imagenesSeleccionadas");
+        editor.apply();
+        editor.putStringSet("imagenesSeleccionadas", imagenesSeleccionadas);
+        editor.apply();
+        Log.v("guardado el valor",String.valueOf(imagenesSeleccionadas.size()));
+        editor.commit();
 
 
     }

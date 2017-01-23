@@ -2,10 +2,15 @@ package proyecto.laboratorio.memoriacamilogarritano;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by malek on 04/12/16.
@@ -40,18 +45,22 @@ public class PreferencesActivity extends PreferenceActivity {
             addPreferencesFromResource(R.xml.settings);
 
             //Elegir imágenes
-            /*Preference em = (Preference) findPreference("lista_imagenes");
+            Preference em = (Preference) findPreference("lista_imagenes");
             em.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent();
-                    intent.setType("drawable");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    int PICK_IMAGE = 1;
-                    startActivityForResult(Intent.createChooser(intent, "Elegir Imágenes"), PICK_IMAGE);
-                    return true;
+                    cargarRecursosUsados();
+                    return false;
                 }
-            });*/
+            });
+        }
+
+        private Set<String> cargarRecursosUsados() {
+            SharedPreferences settings = this.getActivity().getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
+            SharedPreferences.Editor editor = settings.edit();
+            Set<String> r =  settings.getStringSet("imagenesSeleccionadas", new HashSet<String>());
+            GrillaActivity.imagenesSeleccionadas = r;
+            return r;
         }
 
         @Override
