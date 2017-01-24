@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:text="¡Felicitaciones!"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="147dp">
+
+        <Button
+                android:id="@+id/repetir"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/media_repeat_alt"
+                android:textColor="@android:color/white"
+                android:elevation="0dp"
+                android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/siguiente"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/arrow_alt_right"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.87">
+
+        <TextView
+            android:text="Repetir Nivel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:layout_weight="1"
+            android:textAppearance="@android:style/TextAppearance"
+            android:textAllCaps="false"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="Siguiente Nivel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:layout_weight="1"
+            android:textAppearance="@android:style/TextAppearance"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+</LinearLayout>
