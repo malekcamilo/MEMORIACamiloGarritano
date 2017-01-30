@@ -32,7 +32,6 @@
     <PreferenceCategory android:title="Selección de imágenes">
         <Preference
             android:key="@string/key_lista_imagenes"
-            android:summary="Imágenes seleccionadas"
             android:title="Abrir grilla de selección">
             <intent android:action="android.intent.action.VIEW"
             android:targetPackage="proyecto.laboratorio.memoriacamilogarritano"

@@ -109,8 +109,6 @@ public class JuegoActivity extends Activity {
     private ArrayList<Recurso> cargarRecursosUsados() {
 
         SharedPreferences settings = getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
-
         Set<String> r =  settings.getStringSet("imagenesSeleccionadas", new HashSet<String>());
         ArrayList<Recurso> res = new ArrayList<>();
         if (r != null) {

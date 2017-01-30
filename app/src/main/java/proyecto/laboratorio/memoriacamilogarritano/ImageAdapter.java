@@ -30,7 +30,6 @@ public class ImageAdapter extends BaseAdapter { private Context mContext;
         return 0;
     }
 
-    // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
         if (convertView == null) {
@@ -51,8 +50,6 @@ public class ImageAdapter extends BaseAdapter { private Context mContext;
         }
         return imageView;
     }
-
-    // references to our images
 
     private Recurso[] recursos = {
             Recurso.MATRA, Recurso.ARRIADOR, Recurso.CABEZADA, Recurso.BOZAL,Recurso.BAJO_MONTURA,

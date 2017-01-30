@@ -45,7 +45,7 @@ public class PreferencesActivity extends PreferenceActivity {
             addPreferencesFromResource(R.xml.settings);
 
             //Elegir imágenes
-            Preference em = (Preference) findPreference("lista_imagenes");
+            Preference em = findPreference("lista_imagenes");
             em.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
@@ -57,7 +57,6 @@ public class PreferencesActivity extends PreferenceActivity {
 
         private Set<String> cargarRecursosUsados() {
             SharedPreferences settings = this.getActivity().getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
-            SharedPreferences.Editor editor = settings.edit();
             Set<String> r =  settings.getStringSet("imagenesSeleccionadas", new HashSet<String>());
             GrillaActivity.imagenesSeleccionadas = r;
             return r;
@@ -65,12 +64,11 @@ public class PreferencesActivity extends PreferenceActivity {
 
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            //Por ahora porque son listas le puse s% en el summary
-            /* Preference pref = findPreference(key);
-            if (pref instanceof ListPreference) {
-                ListPreference listPref = (ListPreference) pref;
-                pref.setSummary(listPref.getEntry());
-            }*/
+            if (key == "lista_imagenes") {
+                Preference pref = findPreference(key);
+                pref.setSummary(GrillaActivity.imagenesSeleccionadas.size());
+            }
+
         }
 
         @Override
