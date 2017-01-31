@@ -46,7 +46,8 @@ public class PreferencesActivity extends PreferenceActivity {
             addPreferencesFromResource(R.xml.settings);
 
             //Elegir imágenes
-            Preference em = findPreference("lista_imagenes");
+            // Preference em = findPreference("lista_imagenes");
+            Preference em = findPreference(getString(R.string.key_lista_imagenes));
             em.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
@@ -66,8 +67,7 @@ public class PreferencesActivity extends PreferenceActivity {
 
         private void setearSummaryImagenes(){
             //Setear summary
-            /*Preference pref = findPreference("lista_imagenes");
-            pref.setSummary(GrillaActivity.imagenesSeleccionadas.size()+" / 26");*/
+
             SharedPreferences settings = this.getActivity().getSharedPreferences("cant_img", MODE_PRIVATE);
             int cant =  settings.getInt("cant_img", 26);
 
