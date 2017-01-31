@@ -1,14 +1,10 @@
 package proyecto.laboratorio.memoriacamilogarritano;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
-import android.util.Log;
-
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,9 +18,7 @@ public class PreferencesActivity extends PreferenceActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //PreferenceManager.setDefaultValues(this, R.xml.settings, false);
-/*
-        getFragmentManager().beginTransaction().replace(android.R.id.content, new PreferencesFragment()).commit();
-*/
+        //getFragmentManager().beginTransaction().replace(android.R.id.content, new PreferencesFragment()).commit();
 
     }
 
