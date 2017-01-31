@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -65,6 +66,13 @@ public class GrillaActivity extends Activity {
         editor.apply();
         Log.v("guardado el valor",String.valueOf(imagenesSeleccionadas.size()));
         editor.commit();
+
+        //Guardar cantidad
+        SharedPreferences settings2 = getApplicationContext().getSharedPreferences("cant_img", MODE_PRIVATE);
+        SharedPreferences.Editor editor2 = settings2.edit();
+        editor2.putInt("cant_img", imagenesSeleccionadas.size());
+        editor2.apply();
+        editor2.commit();
 
 
     }

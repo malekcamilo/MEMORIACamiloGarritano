@@ -1,5 +1,6 @@
 package proyecto.laboratorio.memoriacamilogarritano;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -53,6 +54,7 @@ public class PreferencesActivity extends PreferenceActivity {
                     return false;
                 }
             });
+            this.setearSummaryImagenes();
         }
 
         private Set<String> cargarRecursosUsados() {
@@ -62,18 +64,25 @@ public class PreferencesActivity extends PreferenceActivity {
             return r;
         }
 
+        private void setearSummaryImagenes(){
+            //Setear summary
+            /*Preference pref = findPreference("lista_imagenes");
+            pref.setSummary(GrillaActivity.imagenesSeleccionadas.size()+" / 26");*/
+            SharedPreferences settings = this.getActivity().getSharedPreferences("cant_img", MODE_PRIVATE);
+            int cant =  settings.getInt("cant_img", 26);
+
+            Preference pref = findPreference(getString(R.string.key_lista_imagenes));
+            pref.setSummary(cant+" / 26");
+        }
+
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            if (key == "lista_imagenes") {
-                Preference pref = findPreference(key);
-                pref.setSummary(GrillaActivity.imagenesSeleccionadas.size());
-            }
-
         }
 
         @Override
         public void onResume() {
             super.onResume();
+            this.setearSummaryImagenes();
             // Registrar escucha
             getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
         }

@@ -34,8 +34,8 @@
             android:key="@string/key_lista_imagenes"
             android:title="Abrir grilla de selección">
             <intent android:action="android.intent.action.VIEW"
-            android:targetPackage="proyecto.laboratorio.memoriacamilogarritano"
-            android:targetClass="proyecto.laboratorio.memoriacamilogarritano.GrillaActivity"/>
+                android:targetPackage="proyecto.laboratorio.memoriacamilogarritano"
+                android:targetClass="proyecto.laboratorio.memoriacamilogarritano.GrillaActivity"/>
         </Preference>
     </PreferenceCategory>
 </PreferenceScreen>
