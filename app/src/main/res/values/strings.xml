@@ -1,0 +1,16 @@
+<resources>
+    <!--Títulos-->
+    <string name="app_name">MEMORIACamiloGarritano</string>
+    <string name="title_activity_settings">Ajustes</string>
+    <string name="title_menu_settings">Ajustes</string>
+    <!--Títulos-->
+
+    <!--key preferencias-->
+    <string name="key_voz">voz</string>
+    <string name="key_dificultad">dificultad</string>
+    <string name="key_switch_tiempo">switch_tiempo</string>
+    <string name="key_tiempo">tiempo</string>
+    <string name="key_lista_imagenes">lista_imagenes</string>
+    <!--key preferencias-->
+
+</resources>

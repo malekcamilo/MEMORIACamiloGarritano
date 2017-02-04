@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fragment="proyecto.laboratorio.memoriacamilogarritano.PreferencesActivity$PreferencesFragment">
+    <ListPreference
+        android:defaultValue="F"
+        android:entries="@array/lista_voz"
+        android:entryValues="@array/lista_voz_value"
+        android:key="@string/key_voz"
+        android:summary="%s"
+        android:title="Voz" />
+
+    <ListPreference
+        android:defaultValue="4"
+        android:entries="@array/lista_dificultad"
+        android:entryValues="@array/lista_dificultad_value"
+        android:key="@string/key_dificultad"
+        android:summary="%s"
+        android:title="Dificultad" />
+
+        <SwitchPreference
+            android:title="Habilitar/Deshabilitar Tiempo"
+            android:defaultValue="false"
+            android:key="@string/key_switch_tiempo" />
+        <ListPreference
+            android:defaultValue="1"
+            android:dependency="@string/key_switch_tiempo"
+            android:entries="@array/lista_tiempo"
+            android:entryValues="@array/lista_tiempo_value"
+            android:key="@string/key_tiempo"
+            android:summary="%s" />
+
+    <PreferenceCategory android:title="Selección de imágenes">
+        <Preference
+            android:key="@string/key_lista_imagenes"
+            android:title="Abrir grilla de selección">
+            <intent android:action="android.intent.action.VIEW"
+                android:targetPackage="proyecto.laboratorio.memoriacamilogarritano"
+                android:targetClass="proyecto.laboratorio.memoriacamilogarritano.GrillaActivity"/>
+        </Preference>
+    </PreferenceCategory>
+</PreferenceScreen>
