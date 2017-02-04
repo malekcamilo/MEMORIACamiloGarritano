@@ -56,11 +56,13 @@ public class JuegoActivity extends Activity {
     }
 
     private void leerConfiguraciones() {
-        //Es cualquiera el tema del String
+        //Es cualquiera el tema del String pero con la lista no se puede zafar de otra manera
+        //salvo crear otra clase.
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String dificultadStr = prefs.getString("dificultad", "4");
         dificultad = Integer.parseInt(dificultadStr);
 
+        //Si es falso el switch la var tiempo es 0
         String tiempoStr="0";
         if (prefs.getBoolean("switch_tiempo",false)!=false){
             tiempoStr=prefs.getString("tiempo","1");
