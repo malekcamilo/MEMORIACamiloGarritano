@@ -27,11 +27,13 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+        <item>5</item>
     </string-array>
     <string-array name="lista_tiempo">
+        <item>1 Minuto</item>
+        <item>2 Minutos</item>
+        <item>3 Minutos</item>
+        <item>4 Minutos</item>
         <item>5 Minutos</item>
-        <item>15 Minutos</item>
-        <item>30 Minutos</item>
-        <item>1 Hora</item>
     </string-array>
 </resources>

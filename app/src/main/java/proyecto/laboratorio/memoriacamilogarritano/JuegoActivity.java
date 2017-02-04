@@ -42,6 +42,7 @@ public class JuegoActivity extends Activity {
     int CANTIDAD_FIGURAS_MOSTRAR;
     int CANTIDAD_FIGURAS_SELECCIONADAS;
     int dificultad;
+    int tiempo;
     int CANTIDAD_RESPONDIDAS;
     private Set<Integer> recursosUsadosMarcados = new HashSet<>();
 
@@ -55,9 +56,17 @@ public class JuegoActivity extends Activity {
     }
 
     private void leerConfiguraciones() {
+        //Es cualquiera el tema del String
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String dificultadStr = prefs.getString("dificultad", "4");
         dificultad = Integer.parseInt(dificultadStr);
+
+        String tiempoStr="0";
+        if (prefs.getBoolean("switch_tiempo",false)!=false){
+            tiempoStr=prefs.getString("tiempo","1");
+        }
+        tiempo=Integer.parseInt(tiempoStr);
+        Log.v("tiempo", String.valueOf(tiempo));
     }
 
 
