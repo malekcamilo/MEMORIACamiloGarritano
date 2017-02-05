@@ -309,6 +309,7 @@ public class JuegoActivity extends Activity {
                         public void run() {
                             CANTIDAD_RESPONDIDAS++;
                             if (CANTIDAD_RESPONDIDAS<CANTIDAD_FIGURAS_SELECCIONADAS) {
+                                //Cancelo el handler si es que se inició
                                 hTiempo.removeCallbacks(rTiempo);
                                 JuegoActivity.this.armarJuego(CANTIDAD_FIGURAS_MOSTRAR, CANTIDAD_RESPONDIDAS, CANTIDAD_FIGURAS_SELECCIONADAS);
                             }
