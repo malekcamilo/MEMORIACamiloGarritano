@@ -59,6 +59,12 @@ public class JuegoActivity extends Activity {
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        mPlayer.stop();
+    }
+
     private void leerConfiguraciones() {
         //Es cualquiera el tema del String pero con la lista no se puede zafar de otra manera
         //salvo crear otra clase.
