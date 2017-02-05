@@ -27,6 +27,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
+import android.os.Handler;
 
 public class JuegoActivity extends Activity {
     private static MediaPlayer mPlayer;
@@ -45,6 +46,8 @@ public class JuegoActivity extends Activity {
     int tiempo;
     int CANTIDAD_RESPONDIDAS;
     private Set<Integer> recursosUsadosMarcados = new HashSet<>();
+    private Handler hTiempo=null;
+    private Runnable rTiempo=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +113,9 @@ public class JuegoActivity extends Activity {
             //Agrego las imageviews al layout
             layout.addView(imagenView);
         }
-
+        if (tiempo != 0){
+            this.correrTiempo();
+        }
         this.eventosOpciones(imageViews,posicionCorrecta);
 
         ((TextView) findViewById(R.id.textViewProgreso)).setText(String.valueOf(cantidadRespondidas+1) +"/"+ CANTIDAD_FIGURAS_SELECCIONADAS.toString());
@@ -302,10 +307,11 @@ public class JuegoActivity extends Activity {
                     descriptor.close();
                     view.postDelayed(new Runnable() {
                         public void run() {
-
                             CANTIDAD_RESPONDIDAS++;
-                            if (CANTIDAD_RESPONDIDAS<CANTIDAD_FIGURAS_SELECCIONADAS)
-                                JuegoActivity.this.armarJuego(CANTIDAD_FIGURAS_MOSTRAR,CANTIDAD_RESPONDIDAS,CANTIDAD_FIGURAS_SELECCIONADAS);
+                            if (CANTIDAD_RESPONDIDAS<CANTIDAD_FIGURAS_SELECCIONADAS) {
+                                hTiempo.removeCallbacks(rTiempo);
+                                JuegoActivity.this.armarJuego(CANTIDAD_FIGURAS_MOSTRAR, CANTIDAD_RESPONDIDAS, CANTIDAD_FIGURAS_SELECCIONADAS);
+                            }
                             else {
                                 JuegoActivity.this.mostrarDialogoNivelCompleto(JuegoActivity.this); }
                         }
@@ -388,4 +394,22 @@ public class JuegoActivity extends Activity {
 
         dialog.show();
     }
+
+    private void correrTiempo(){
+        //Tengo que ver si está bien acá o debería crear un sólo handler
+        hTiempo= new Handler();
+        rTiempo=new Runnable() {
+            public void run() {
+                //Modificar
+                CANTIDAD_RESPONDIDAS++;
+                if (CANTIDAD_RESPONDIDAS<CANTIDAD_FIGURAS_SELECCIONADAS)
+                    JuegoActivity.this.armarJuego(CANTIDAD_FIGURAS_MOSTRAR,CANTIDAD_RESPONDIDAS,CANTIDAD_FIGURAS_SELECCIONADAS);
+                else {
+                    JuegoActivity.this.mostrarDialogoNivelCompleto(JuegoActivity.this); }
+            }
+        };
+        //Acá tendría que obtener el tiempo mejor porque ahora son minutos y queda bien
+        hTiempo.postDelayed(rTiempo,1000*60*tiempo);
+    }
+
 }
