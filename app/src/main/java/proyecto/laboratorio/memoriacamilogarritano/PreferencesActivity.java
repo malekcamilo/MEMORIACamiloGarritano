@@ -19,7 +19,6 @@ public class PreferencesActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         //PreferenceManager.setDefaultValues(this, R.xml.settings, false);
         //getFragmentManager().beginTransaction().replace(android.R.id.content, new PreferencesFragment()).commit();
-
     }
 
     @Override

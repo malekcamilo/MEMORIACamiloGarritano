@@ -9,6 +9,7 @@ import android.content.res.AssetFileDescriptor;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -115,11 +116,13 @@ public class JuegoActivity extends Activity {
         }
         if (tiempo != 0){
             this.correrTiempo();
+        } else {
+            TextView text_tiempo= (TextView) findViewById(R.id.textViewTiempo);
+            text_tiempo.setText("Tiempo: Ilimitado");
         }
         this.eventosOpciones(imageViews,posicionCorrecta);
 
-        ((TextView) findViewById(R.id.textViewProgreso)).setText(String.valueOf(cantidadRespondidas+1) +"/"+ CANTIDAD_FIGURAS_SELECCIONADAS.toString());
-
+        ((TextView) findViewById(R.id.textViewProgreso)).setText("Progreso: "+String.valueOf(cantidadRespondidas+1) +"/"+ CANTIDAD_FIGURAS_SELECCIONADAS.toString());
     }
 
     private ArrayList<Recurso> cargarRecursosUsados() {
@@ -310,7 +313,9 @@ public class JuegoActivity extends Activity {
                             CANTIDAD_RESPONDIDAS++;
                             if (CANTIDAD_RESPONDIDAS<CANTIDAD_FIGURAS_SELECCIONADAS) {
                                 //Cancelo el handler si es que se inició
-                                hTiempo.removeCallbacks(rTiempo);
+                                if (tiempo!=0){
+                                    hTiempo.removeCallbacks(rTiempo);
+                                }
                                 JuegoActivity.this.armarJuego(CANTIDAD_FIGURAS_MOSTRAR, CANTIDAD_RESPONDIDAS, CANTIDAD_FIGURAS_SELECCIONADAS);
                             }
                             else {
@@ -411,6 +416,17 @@ public class JuegoActivity extends Activity {
         };
         //Acá tendría que obtener el tiempo mejor porque ahora son minutos y queda bien
         hTiempo.postDelayed(rTiempo,1000*60*tiempo);
+
+        //Timer
+        final TextView text_tiempo= (TextView) findViewById(R.id.textViewTiempo);
+        new CountDownTimer(1000*60*tiempo, 1000) {
+            public void onTick(long millisUntilFinished) {
+                text_tiempo.setText("Tiempo: " + millisUntilFinished / 1000);
+            }
+            public void onFinish() {
+            }
+        }.start();
+
     }
 
 }
