@@ -49,6 +49,7 @@ public class JuegoActivity extends Activity {
     private Set<Integer> recursosUsadosMarcados = new HashSet<>();
     private Handler hTiempo=null;
     private Runnable rTiempo=null;
+    private CountDownTimer counterDownTimer=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -314,20 +315,21 @@ public class JuegoActivity extends Activity {
                     JuegoActivity.reproducirSonido(descriptor);
                     view.setBackgroundColor(Color.rgb(0,173,56));
                     descriptor.close();
+                    //Cancelo el handler si es que se inició
+                    if (tiempo!=0){
+                        hTiempo.removeCallbacks(rTiempo);
+                        counterDownTimer.cancel();
+                    }
                     view.postDelayed(new Runnable() {
                         public void run() {
                             CANTIDAD_RESPONDIDAS++;
                             if (CANTIDAD_RESPONDIDAS<CANTIDAD_FIGURAS_SELECCIONADAS) {
-                                //Cancelo el handler si es que se inició
-                                if (tiempo!=0){
-                                    hTiempo.removeCallbacks(rTiempo);
-                                }
                                 JuegoActivity.this.armarJuego(CANTIDAD_FIGURAS_MOSTRAR, CANTIDAD_RESPONDIDAS, CANTIDAD_FIGURAS_SELECCIONADAS);
                             }
                             else {
                                 JuegoActivity.this.mostrarDialogoNivelCompleto(JuegoActivity.this); }
                         }
-                    }, 1000);
+                    }, 7000);
 
 
                 } catch (IOException e) {
@@ -425,7 +427,7 @@ public class JuegoActivity extends Activity {
 
         //Timer
         final TextView text_tiempo= (TextView) findViewById(R.id.textViewTiempo);
-        new CountDownTimer(1000*60*tiempo, 1000) {
+        counterDownTimer=new CountDownTimer(1000*60*tiempo, 1000) {
             public void onTick(long millisUntilFinished) {
                 text_tiempo.setText("Tiempo: " + millisUntilFinished / 1000);
             }
