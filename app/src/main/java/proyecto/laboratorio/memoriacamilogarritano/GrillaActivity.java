@@ -32,10 +32,12 @@ public class GrillaActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 Log.v("tag",v.getTag().toString());
-                if (imagenesSeleccionadas.contains(v.getTag().toString())) {
-                    Toast.makeText(GrillaActivity.this, "Imagen Inhabilitada", Toast.LENGTH_SHORT).show();
-                    imagenesSeleccionadas.remove(v.getTag().toString());
-                    v.setBackgroundColor(Color.TRANSPARENT);
+                if (imagenesSeleccionadas.contains(v.getTag().toString()))   {
+                    if (imagenesSeleccionadas.size()>1) {
+                        Toast.makeText(GrillaActivity.this, "Imagen Inhabilitada", Toast.LENGTH_SHORT).show();
+                        imagenesSeleccionadas.remove(v.getTag().toString());
+                        v.setBackgroundColor(Color.TRANSPARENT);
+                    }
                 }
                 else {
                     Toast.makeText(GrillaActivity.this, "Imagen Habilitada", Toast.LENGTH_SHORT).show();
