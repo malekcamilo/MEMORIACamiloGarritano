@@ -444,9 +444,9 @@ public class JuegoActivity extends Activity {
             btnSiguiente.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    dialog.dismiss();
                     finish();
-                    /*Intent intent = new Intent(JuegoActivity.this,MainActivity.class);
-                    startActivity(intent);*/
+
                 }
             });
 
