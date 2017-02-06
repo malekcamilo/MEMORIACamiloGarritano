@@ -3,6 +3,7 @@ package proyecto.laboratorio.memoriacamilogarritano;
 import android.app.Activity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 
@@ -437,9 +438,18 @@ public class JuegoActivity extends Activity {
             });
         }
         else {
-            btnSiguiente.setBackgroundResource(R.drawable.arrow_des_right);
+            btnSiguiente.setBackgroundResource(R.drawable.exit);
             TextView t = (TextView) dialogView.findViewById(R.id.textView4);
-            t.setTextColor(Color.GRAY);
+            t.setTextColor(Color.RED); t.setText("Salir");
+            btnSiguiente.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                    /*Intent intent = new Intent(JuegoActivity.this,MainActivity.class);
+                    startActivity(intent);*/
+                }
+            });
+
         }
         // 3. Get the AlertDialog from create()
         if (!isFinishing())
