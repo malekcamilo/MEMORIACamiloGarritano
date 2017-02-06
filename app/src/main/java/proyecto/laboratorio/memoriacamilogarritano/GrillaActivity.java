@@ -16,12 +16,13 @@ import java.util.Set;
 
 public class GrillaActivity extends Activity {
 
-
+    static Toast toast = null;
     static Set<String> imagenesSeleccionadas = new HashSet<>();
 
     @Override
 
         protected void onCreate(Bundle savedInstanceState) {
+        toast = new Toast(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grilla);
         GridView gridview = (GridView) findViewById(R.id.gridview);
@@ -34,13 +35,17 @@ public class GrillaActivity extends Activity {
                 Log.v("tag",v.getTag().toString());
                 if (imagenesSeleccionadas.contains(v.getTag().toString()))   {
                     if (imagenesSeleccionadas.size()>1) {
-                        Toast.makeText(GrillaActivity.this, "Imagen Inhabilitada", Toast.LENGTH_SHORT).show();
+                        if (toast != null) toast.cancel();
+                        toast = Toast.makeText(GrillaActivity.this, "Imagen Inhabilitada", Toast.LENGTH_SHORT);
+                        toast.show();
                         imagenesSeleccionadas.remove(v.getTag().toString());
                         v.setBackgroundColor(Color.TRANSPARENT);
                     }
                 }
                 else {
-                    Toast.makeText(GrillaActivity.this, "Imagen Habilitada", Toast.LENGTH_SHORT).show();
+                    if (toast != null) toast.cancel();
+                    toast=Toast.makeText(GrillaActivity.this, "Imagen Habilitada", Toast.LENGTH_SHORT);
+                    toast.show();
                     imagenesSeleccionadas.add(v.getTag().toString());
                     v.setBackgroundColor(c.getColorMarcado());
                 }
