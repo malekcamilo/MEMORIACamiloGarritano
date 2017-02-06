@@ -416,6 +416,7 @@ public class JuegoActivity extends Activity {
         final AlertDialog dialog = builder.create();
         dialog.setCancelable(false);
 
+
         btnRepetir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -423,15 +424,23 @@ public class JuegoActivity extends Activity {
                 dialog.dismiss();
             }
         });
-        btnSiguiente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (dificultad<4) dificultad++;
-                act.inicializarJuego();
-                dialog.dismiss();
+        if (dificultad < 4) {
 
-            }
-        });
+            btnSiguiente.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dificultad++;
+                    act.inicializarJuego();
+                    dialog.dismiss();
+
+                }
+            });
+        }
+        else {
+            btnSiguiente.setBackgroundResource(R.drawable.arrow_des_right);
+            TextView t = (TextView) dialogView.findViewById(R.id.textView4);
+            t.setTextColor(Color.GRAY);
+        }
         // 3. Get the AlertDialog from create()
 
         dialog.show();
