@@ -275,10 +275,10 @@ public class JuegoActivity extends Activity {
         });
     }
 
+    //listadoOpcionnes es final para usarla en varios lados
+    private void eventosOpciones(final ArrayList<ImageView> listadoOpciones, int posicionCorrecta) {
 
-    private void eventosOpciones(ArrayList<ImageView> listadoOpciones, int posicionCorrecta) {
-
-        View.OnClickListener sonidoIncorrecto  = new View.OnClickListener() {
+        final View.OnClickListener sonidoIncorrecto  = new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
                 try {
@@ -311,6 +311,14 @@ public class JuegoActivity extends Activity {
 
                 try {
                     view.setOnClickListener(null);
+                    //Desactivo los eventos
+                    for (int j=0;j<listadoOpciones.size();j++) {
+                        ImageView imagenIconrrecta = listadoOpciones.get(j);
+                        imagenIconrrecta.setOnClickListener(null);
+                    }
+                    ImageView parlante = (ImageView) findViewById(R.id.imageViewParlante);
+                    parlante.setOnClickListener(null);
+                    //
                     AssetFileDescriptor descriptor = getAssets().openFd("Caballo/relincho.m4a");
                     JuegoActivity.reproducirSonido(descriptor);
                     view.setBackgroundColor(Color.rgb(0,173,56));
@@ -320,6 +328,7 @@ public class JuegoActivity extends Activity {
                         hTiempo.removeCallbacks(rTiempo);
                         counterDownTimer.cancel();
                     }
+                    //
                     view.postDelayed(new Runnable() {
                         public void run() {
                             CANTIDAD_RESPONDIDAS++;
