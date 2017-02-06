@@ -43,9 +43,10 @@ public class JuegoActivity extends Activity {
     private ArrayList<Recurso> recursosUsados;
     int CANTIDAD_FIGURAS_MOSTRAR;
     int CANTIDAD_FIGURAS_SELECCIONADAS;
+    int CANTIDAD_RESPONDIDAS;
     int dificultad;
     int tiempo;
-    int CANTIDAD_RESPONDIDAS;
+    int imagenes;
     private Set<Integer> recursosUsadosMarcados = new HashSet<>();
     private Handler hTiempo=null;
     private Runnable rTiempo=null;
@@ -80,19 +81,37 @@ public class JuegoActivity extends Activity {
         }
         tiempo=Integer.parseInt(tiempoStr);
         Log.v("tiempo", String.valueOf(tiempo));
+
+        //Para setear el valor por defecto de las imágenes seleccionadas
+        SharedPreferences prefs2 = getSharedPreferences("cant_img", MODE_PRIVATE);
+        imagenes=prefs2.getInt("cant_img",0);
     }
 
 
     private void inicializarJuego() {
         recursosUsadosMarcados.clear();
+        if (imagenes==0){
+            this.seleccionarTodas();
+        }
         recursosUsados = this.cargarRecursosUsados();
         CANTIDAD_FIGURAS_MOSTRAR = this.getDificultadCantidadImagenes(dificultad);
         CANTIDAD_FIGURAS_SELECCIONADAS = recursosUsados.size();
-
         CANTIDAD_RESPONDIDAS = 0;
 
         this.armarJuego(CANTIDAD_FIGURAS_MOSTRAR,CANTIDAD_RESPONDIDAS,CANTIDAD_FIGURAS_SELECCIONADAS);
+    }
 
+    private void seleccionarTodas() {
+        for (Recurso r: recursos){
+            GrillaActivity.imagenesSeleccionadas.add(String.valueOf(r.getImagen()));
+        }
+        SharedPreferences settings = getApplicationContext().getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.remove("imagenesSeleccionadas");
+        editor.apply();
+        editor.putStringSet("imagenesSeleccionadas", GrillaActivity.imagenesSeleccionadas);
+        editor.apply();
+        editor.commit();
     }
 
 
