@@ -17,5 +17,10 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/button_comenzar"
-        />
+        android:fontFamily="casual"
+        android:background="?android:attr/textColorLink"
+        android:elevation="5dp"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        android:padding="10dp" />
 </RelativeLayout>
