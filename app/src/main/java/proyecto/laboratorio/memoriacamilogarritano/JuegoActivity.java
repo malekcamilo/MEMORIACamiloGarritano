@@ -442,8 +442,10 @@ public class JuegoActivity extends Activity {
             t.setTextColor(Color.GRAY);
         }
         // 3. Get the AlertDialog from create()
-
+        if (!isFinishing())
+        {
         dialog.show();
+        }
     }
 
     private void correrTiempo(){
