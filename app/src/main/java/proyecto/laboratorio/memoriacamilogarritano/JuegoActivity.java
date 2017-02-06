@@ -91,7 +91,6 @@ public class JuegoActivity extends Activity {
     private void inicializarJuego() {
         recursosUsadosMarcados.clear();
         if (imagenes==0){
-            Log.v("Seleccionar todas: ",String.valueOf(imagenes));
             this.seleccionarTodas();
         }
         recursosUsados = this.cargarRecursosUsados();
@@ -103,6 +102,16 @@ public class JuegoActivity extends Activity {
     }
 
     private void seleccionarTodas() {
+        for (Recurso r: recursos){
+            GrillaActivity.imagenesSeleccionadas.add(String.valueOf(r.getImagen()));
+        }
+        SharedPreferences settings = getApplicationContext().getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.remove("imagenesSeleccionadas");
+        editor.apply();
+        editor.putStringSet("imagenesSeleccionadas", GrillaActivity.imagenesSeleccionadas);
+        editor.apply();
+        editor.commit();
     }
 
 

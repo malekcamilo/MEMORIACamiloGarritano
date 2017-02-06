@@ -74,8 +74,6 @@ public class GrillaActivity extends Activity {
         editor2.putInt("cant_img", imagenesSeleccionadas.size());
         editor2.apply();
         editor2.commit();
-
-
     }
 
 
