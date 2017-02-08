@@ -363,7 +363,7 @@ public class JuegoActivity extends Activity {
                             else {
                                 JuegoActivity.this.mostrarDialogoNivelCompleto(JuegoActivity.this); }
                         }
-                    }, 7000);
+                    }, 4000);
 
 
                 } catch (IOException e) {
