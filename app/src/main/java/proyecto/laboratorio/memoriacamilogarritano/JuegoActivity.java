@@ -66,8 +66,13 @@ public class JuegoActivity extends Activity {
     public void onPause() {
         super.onPause();
         mPlayer.stop();
+        //esto fue lo último que agregué
+        if (tiempo!=0){
+            hTiempo.removeCallbacks(rTiempo);
+            counterDownTimer.cancel();
+        }                                                            
     }
-
+    
     private void leerConfiguraciones() {
         //Es cualquiera el tema del String pero con la lista no se puede zafar de otra manera
         //salvo crear otra clase.
@@ -415,7 +420,8 @@ public class JuegoActivity extends Activity {
         Button btnRepetir = (Button) dialogView.findViewById(R.id.repetir);
         Button btnSiguiente = (Button) dialogView.findViewById(R.id.siguiente);
         final AlertDialog dialog = builder.create();
-        dialog.setCancelable(false);
+//        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
 
 
         btnRepetir.setOnClickListener(new View.OnClickListener() {
