@@ -485,7 +485,7 @@ public class JuegoActivity extends Activity {
         counterDownTimer=new CountDownTimer(1000*60*tiempo, 1000) {
             public void onTick(long millisUntilFinished) {
 //                text_tiempo.setText("Tiempo: " + millisUntilFinished / 1000);
-                text_tiempo.setText((millisUntilFinished / 60000)+":"+(millisUntilFinished % 60000 / 1000));
+                text_tiempo.setText("Tiempo: "+(millisUntilFinished / 60000)+"m "+(millisUntilFinished % 60000 / 1000)+"s");
             }
             public void onFinish() {
             }
