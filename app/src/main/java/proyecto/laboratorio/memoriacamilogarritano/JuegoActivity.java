@@ -474,7 +474,8 @@ public class JuegoActivity extends Activity {
         final TextView text_tiempo = (TextView) findViewById(R.id.textViewTiempo);
         counterDownTimer = new CountDownTimer(1000 * 60 * tiempo, 1000) {
             public void onTick(long millisUntilFinished) {
-                text_tiempo.setText("Tiempo: " + String.format("%02d", TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)) + ":" + String.format("%02d", TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                text_tiempo.setText("Tiempo: " + String.format("%02d", TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)) +
+                        ":" + String.format("%02d", TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
             }
 
             public void onFinish() {
