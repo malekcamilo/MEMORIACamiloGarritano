@@ -344,7 +344,7 @@ public class JuegoActivity extends Activity {
                     ImageView parlante = (ImageView) findViewById(R.id.imageViewParlante);
                     parlante.setOnClickListener(null);
                     //
-                    AssetFileDescriptor descriptor = getAssets().openFd("Caballo/relincho_corto.m4a");
+                    AssetFileDescriptor descriptor = getAssets().openFd("Caballo/relincho.m4a");
                     JuegoActivity.reproducirSonido(descriptor);
                     view.setBackgroundColor(Color.rgb(0,173,56));
                     descriptor.close();
@@ -363,7 +363,7 @@ public class JuegoActivity extends Activity {
                             else {
                                 JuegoActivity.this.mostrarDialogoNivelCompleto(JuegoActivity.this); }
                         }
-                    }, 4000);
+                    }, 2000);
 
 
                 } catch (IOException e) {

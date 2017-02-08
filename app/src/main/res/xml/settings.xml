@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fragment="proyecto.laboratorio.memoriacamilogarritano.PreferencesActivity$PreferencesFragment">
+    android:fragment="proyecto.laboratorio.memoriacamilogarritano.PreferencesActivity$PreferencesFragment"
+    android:title="Preferencias">
     <ListPreference
         android:defaultValue="F"
         android:entries="@array/lista_voz"
@@ -17,17 +18,17 @@
         android:summary="%s"
         android:title="Dificultad" />
 
-        <SwitchPreference
-            android:title="Habilitar/Deshabilitar Tiempo"
-            android:defaultValue="false"
-            android:key="@string/key_switch_tiempo" />
-        <ListPreference
-            android:defaultValue="1"
-            android:dependency="@string/key_switch_tiempo"
-            android:entries="@array/lista_tiempo"
-            android:entryValues="@array/lista_tiempo_value"
-            android:key="@string/key_tiempo"
-            android:summary="%s" />
+    <SwitchPreference
+        android:title="Habilitar/Deshabilitar Tiempo"
+        android:defaultValue="false"
+        android:key="@string/key_switch_tiempo" />
+    <ListPreference
+        android:defaultValue="1"
+        android:dependency="@string/key_switch_tiempo"
+        android:entries="@array/lista_tiempo"
+        android:entryValues="@array/lista_tiempo_value"
+        android:key="@string/key_tiempo"
+        android:summary="%s" />
 
     <PreferenceCategory android:title="Selección de imágenes">
         <Preference
