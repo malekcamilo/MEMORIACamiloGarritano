@@ -73,17 +73,6 @@ public class JuegoActivity extends Activity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
     //Inicio menú nivel
 
     @Override
