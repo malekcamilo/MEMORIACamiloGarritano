@@ -78,6 +78,8 @@ public class JuegoActivity extends Activity {
         //salvo crear otra clase.
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String dificultadStr = prefs.getString("dificultad", "4");
+        Log.v("dificultad leida", dificultadStr);
+
         dificultad = Integer.parseInt(dificultadStr);
 
         //Si es falso el switch la var tiempo es 0
@@ -361,6 +363,7 @@ public class JuegoActivity extends Activity {
                                 JuegoActivity.this.armarJuego(CANTIDAD_FIGURAS_MOSTRAR, CANTIDAD_RESPONDIDAS, CANTIDAD_FIGURAS_SELECCIONADAS);
                             }
                             else {
+                                //JuegoActivity.this.mostrarDialogoElegirNivel(JuegoActivity.this); }
                                 JuegoActivity.this.mostrarDialogoNivelCompleto(JuegoActivity.this); }
                         }
                     }, 2000);
@@ -462,6 +465,54 @@ public class JuegoActivity extends Activity {
         {
         dialog.show();
         }
+    }
+
+    private void mostrarDialogoElegirNivel(final JuegoActivity act) {
+
+        // 1. Instantiate an AlertDialog.Builder with its constructor
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        LayoutInflater inflater = this.getLayoutInflater();
+
+        View dialogView = inflater.inflate(R.layout.elegir_nivel_dialog, null);
+        builder.setView(dialogView);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        display.getMetrics(metrics);
+        int width = metrics.widthPixels;
+
+        Button btn1 = (Button) dialogView.findViewById(R.id.nivel1);
+        Button btn2 = (Button) dialogView.findViewById(R.id.nivel2);
+        Button btn3 = (Button) dialogView.findViewById(R.id.nivel3);
+        Button btn4 = (Button) dialogView.findViewById(R.id.nivel4);
+
+        btn1.setWidth(width);
+        btn2.setWidth(width);
+        btn3.setWidth(width);
+        btn4.setWidth(width);
+        final AlertDialog dialog = builder.create();
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                act.escribirDificultad("1");
+                act.leerConfiguraciones();
+                act.inicializarJuego();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    public void escribirDificultad(String s) {
+        Log.v("escribirDificultad",s);
+        SharedPreferences settings2 = getApplicationContext().getSharedPreferences("dificultad", MODE_PRIVATE);
+        SharedPreferences.Editor editor2 = settings2.edit();
+        editor2.putString("dificultad", s);
+        editor2.apply();
+        editor2.commit();
     }
 
     private void correrTiempo(){
