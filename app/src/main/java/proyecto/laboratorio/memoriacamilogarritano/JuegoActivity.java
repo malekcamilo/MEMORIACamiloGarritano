@@ -74,9 +74,14 @@ public class JuegoActivity extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+
+    @Override
     public void onPause() {
         super.onPause();
-        this.cancelarAnterior();
     }
 
     //Inicio menú nivel
@@ -150,6 +155,9 @@ public class JuegoActivity extends Activity {
     public void armarJuego(int CANTIDAD_FIGURAS_MOSTRAR, int cantidadRespondidas, Integer CANTIDAD_FIGURAS_SELECCIONADAS) {
 
         setContentView(R.layout.activity_juego);
+        if (hTiempo !=null) {
+            this.cancelarAnterior();
+        }
 
         TextView text_nivel = (TextView) findViewById(R.id.textViewDificultad);
         text_nivel.setText("Dificultad: " + this.getDificultadStr(dificultad));
@@ -370,7 +378,6 @@ public class JuegoActivity extends Activity {
                     view.setBackgroundColor(Color.rgb(0, 173, 56));
                     descriptor.close();
                     //Cancelo el handler si es que se inició
-                    cancelarAnterior();
                     /*if (tiempo != 0) {
                         hTiempo.removeCallbacks(rTiempo);
                         counterDownTimer.cancel();
@@ -438,7 +445,6 @@ public class JuegoActivity extends Activity {
         btnRepetir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                act.cancelarAnterior();
                 act.inicializarJuego();
                 dialog.dismiss();
             }
@@ -449,7 +455,6 @@ public class JuegoActivity extends Activity {
                 @Override
                 public void onClick(View view) {
                     dificultad++;
-                    act.cancelarAnterior();
                     act.inicializarJuego();
                     dialog.dismiss();
 
@@ -525,7 +530,6 @@ public class JuegoActivity extends Activity {
             public void onClick(View view) {
                 act.escribirDificultad("1");
                 act.leerConfiguraciones();
-                act.cancelarAnterior();
                 act.inicializarJuego();
                 dialog.dismiss();
             }
@@ -536,7 +540,6 @@ public class JuegoActivity extends Activity {
             public void onClick(View view) {
                 act.escribirDificultad("2");
                 act.leerConfiguraciones();
-                act.cancelarAnterior();
                 act.inicializarJuego();
                 dialog.dismiss();
             }
@@ -546,7 +549,6 @@ public class JuegoActivity extends Activity {
             public void onClick(View view) {
                 act.escribirDificultad("3");
                 act.leerConfiguraciones();
-                act.cancelarAnterior();
                 act.inicializarJuego();
                 dialog.dismiss();
             }
@@ -556,7 +558,6 @@ public class JuegoActivity extends Activity {
             public void onClick(View view) {
                 act.escribirDificultad("4");
                 act.leerConfiguraciones();
-                act.cancelarAnterior();
                 act.inicializarJuego();
                 dialog.dismiss();
             }
