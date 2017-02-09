@@ -76,12 +76,7 @@ public class JuegoActivity extends Activity {
     @Override
     public void onPause() {
         super.onPause();
-        mPlayer.stop();
-        //esto fue lo último que agregué
-        if (tiempo != 0) {
-            hTiempo.removeCallbacks(rTiempo);
-            counterDownTimer.cancel();
-        }
+        this.cancelarAnterior();
     }
 
     //Inicio menú nivel
@@ -375,11 +370,11 @@ public class JuegoActivity extends Activity {
                     view.setBackgroundColor(Color.rgb(0, 173, 56));
                     descriptor.close();
                     //Cancelo el handler si es que se inició
-                    if (tiempo != 0) {
+                    cancelarAnterior();
+                    /*if (tiempo != 0) {
                         hTiempo.removeCallbacks(rTiempo);
                         counterDownTimer.cancel();
-                    }
-                    //
+                    }*/
                     view.postDelayed(new Runnable() {
                         public void run() {
                             CANTIDAD_RESPONDIDAS++;
@@ -443,6 +438,7 @@ public class JuegoActivity extends Activity {
         btnRepetir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                act.cancelarAnterior();
                 act.inicializarJuego();
                 dialog.dismiss();
             }
@@ -453,6 +449,7 @@ public class JuegoActivity extends Activity {
                 @Override
                 public void onClick(View view) {
                     dificultad++;
+                    act.cancelarAnterior();
                     act.inicializarJuego();
                     dialog.dismiss();
 
@@ -463,6 +460,7 @@ public class JuegoActivity extends Activity {
             try {
                 descriptor = getAssets().openFd("Final/festejo_final.m4a");
                 JuegoActivity.reproducirSonido(descriptor);
+                descriptor.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -484,6 +482,16 @@ public class JuegoActivity extends Activity {
         if (!isFinishing()) {
             dialog.show();
         }
+    }
+
+    private void cancelarAnterior(){
+        //Paro todo lo anterior
+        mPlayer.stop();
+        if (tiempo != 0) {
+            hTiempo.removeCallbacks(rTiempo);
+            counterDownTimer.cancel();
+        }
+        //
     }
 
     private void mostrarDialogoElegirNivel(final JuegoActivity act) {
@@ -517,6 +525,7 @@ public class JuegoActivity extends Activity {
             public void onClick(View view) {
                 act.escribirDificultad("1");
                 act.leerConfiguraciones();
+                act.cancelarAnterior();
                 act.inicializarJuego();
                 dialog.dismiss();
             }
@@ -527,6 +536,7 @@ public class JuegoActivity extends Activity {
             public void onClick(View view) {
                 act.escribirDificultad("2");
                 act.leerConfiguraciones();
+                act.cancelarAnterior();
                 act.inicializarJuego();
                 dialog.dismiss();
             }
@@ -536,6 +546,7 @@ public class JuegoActivity extends Activity {
             public void onClick(View view) {
                 act.escribirDificultad("3");
                 act.leerConfiguraciones();
+                act.cancelarAnterior();
                 act.inicializarJuego();
                 dialog.dismiss();
             }
@@ -545,6 +556,7 @@ public class JuegoActivity extends Activity {
             public void onClick(View view) {
                 act.escribirDificultad("4");
                 act.leerConfiguraciones();
+                act.cancelarAnterior();
                 act.inicializarJuego();
                 dialog.dismiss();
             }
