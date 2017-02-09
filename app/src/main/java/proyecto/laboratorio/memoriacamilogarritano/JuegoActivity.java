@@ -33,6 +33,7 @@ import java.util.concurrent.TimeUnit;
 
 public class JuegoActivity extends Activity {
     private static MediaPlayer mPlayer;
+    public static int nivel_maximo;
     int CANTIDAD_FIGURAS_MOSTRAR;
     int CANTIDAD_FIGURAS_SELECCIONADAS;
     int CANTIDAD_RESPONDIDAS;
@@ -142,7 +143,8 @@ public class JuegoActivity extends Activity {
     }
 
     public void armarJuego(int CANTIDAD_FIGURAS_MOSTRAR, int cantidadRespondidas, Integer CANTIDAD_FIGURAS_SELECCIONADAS) {
-
+        nivel_maximo = Math.max(dificultad,nivel_maximo);
+        Log.v("nivel_maximo",String.valueOf(nivel_maximo));
         setContentView(R.layout.activity_juego);
         if (hTiempo !=null) {
             this.cancelarAnterior();
@@ -503,18 +505,17 @@ public class JuegoActivity extends Activity {
         display.getMetrics(metrics);
         int width = metrics.widthPixels;
 
-        Button btn1 = (Button) dialogView.findViewById(R.id.nivel1);
-        Button btn2 = (Button) dialogView.findViewById(R.id.nivel2);
-        Button btn3 = (Button) dialogView.findViewById(R.id.nivel3);
-        Button btn4 = (Button) dialogView.findViewById(R.id.nivel4);
+        Button btns[] = new Button[4];
 
-        btn1.setWidth(width);
-        btn2.setWidth(width);
-        btn3.setWidth(width);
-        btn4.setWidth(width);
+        btns[0] = (Button) dialogView.findViewById(R.id.nivel1);
+        btns[1]= (Button) dialogView.findViewById(R.id.nivel2);
+        btns[2]= (Button) dialogView.findViewById(R.id.nivel3);
+        btns[3]= (Button) dialogView.findViewById(R.id.nivel4);
+
+
         final AlertDialog dialog = builder.create();
 
-        btn1.setOnClickListener(new View.OnClickListener() {
+        btns[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 act.escribirDificultad("1");
@@ -524,7 +525,7 @@ public class JuegoActivity extends Activity {
             }
         });
 
-        btn2.setOnClickListener(new View.OnClickListener() {
+        btns[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 act.escribirDificultad("2");
@@ -533,7 +534,7 @@ public class JuegoActivity extends Activity {
                 dialog.dismiss();
             }
         });
-        btn3.setOnClickListener(new View.OnClickListener() {
+        btns[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 act.escribirDificultad("3");
@@ -542,7 +543,7 @@ public class JuegoActivity extends Activity {
                 dialog.dismiss();
             }
         });
-        btn4.setOnClickListener(new View.OnClickListener() {
+        btns[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 act.escribirDificultad("4");
@@ -552,6 +553,10 @@ public class JuegoActivity extends Activity {
             }
         });
 
+        for (int i = 0; i < btns.length; i++) {
+            btns[i].setWidth(width);
+            if (i+1 > nivel_maximo ) btns[i].setEnabled(false);
+        }
         dialog.show();
     }
 

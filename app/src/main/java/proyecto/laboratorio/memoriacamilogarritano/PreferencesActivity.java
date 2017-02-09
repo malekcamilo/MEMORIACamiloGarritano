@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.util.Log;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -70,6 +72,10 @@ public class PreferencesActivity extends PreferenceActivity {
 
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            if (key.equals("dificultad")) {
+                Log.v("cambiado_nivel_maximo","si");
+                JuegoActivity.nivel_maximo = Integer.parseInt(sharedPreferences.getString(key,"4"));
+            }
         }
 
         @Override
