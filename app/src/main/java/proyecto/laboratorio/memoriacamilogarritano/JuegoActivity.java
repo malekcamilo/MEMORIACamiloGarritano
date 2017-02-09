@@ -100,6 +100,7 @@ public class JuegoActivity extends Activity {
             JuegoActivity.this.mostrarDialogoElegirNivel(JuegoActivity.this);
             return true;
         }
+        //Esto no se si se puede sacar
         return super.onOptionsItemSelected(item);
     }
 
@@ -519,8 +520,9 @@ public class JuegoActivity extends Activity {
 
     public void escribirDificultad(String s) {
         Log.v("escribirDificultad",s);
-        SharedPreferences settings2 = getApplicationContext().getSharedPreferences("dificultad", MODE_PRIVATE);
-        SharedPreferences.Editor editor2 = settings2.edit();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+//        SharedPreferences settings2 = getApplicationContext().getSharedPreferences("dificultad", MODE_PRIVATE);
+        SharedPreferences.Editor editor2 = prefs.edit();
         editor2.putString("dificultad", s);
         editor2.apply();
         editor2.commit();
