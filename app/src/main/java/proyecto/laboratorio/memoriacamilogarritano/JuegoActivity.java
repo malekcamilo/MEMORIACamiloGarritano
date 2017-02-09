@@ -515,6 +515,34 @@ public class JuegoActivity extends Activity {
             }
         });
 
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                act.escribirDificultad("2");
+                act.leerConfiguraciones();
+                act.inicializarJuego();
+                dialog.dismiss();
+            }
+        });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                act.escribirDificultad("3");
+                act.leerConfiguraciones();
+                act.inicializarJuego();
+                dialog.dismiss();
+            }
+        });
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                act.escribirDificultad("4");
+                act.leerConfiguraciones();
+                act.inicializarJuego();
+                dialog.dismiss();
+            }
+        });
+
         dialog.show();
     }
 
