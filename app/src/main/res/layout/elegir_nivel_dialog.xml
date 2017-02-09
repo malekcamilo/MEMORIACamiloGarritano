@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:text="Elige una dificultad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:textStyle="normal|bold"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <Button
+            android:id="@+id/nivel1"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:elevation="0dp"
+            android:layout_height="match_parent"
+            style="@android:style/Widget.Button"
+            android:text="Inicial" />
+
+        <Button
+            android:id="@+id/nivel2"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:elevation="0dp"
+            android:layout_height="match_parent"
+            style="@android:style/Widget.Button"
+            android:text="Medio" />
+        <Button
+            android:id="@+id/nivel3"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:elevation="0dp"
+            android:layout_height="match_parent"
+            style="@android:style/Widget.Button"
+            android:text="Avanzado" />
+        <Button
+            android:id="@+id/nivel4"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:elevation="0dp"
+            android:layout_height="match_parent"
+            style="@android:style/Widget.Button"
+            android:text="Experto" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
