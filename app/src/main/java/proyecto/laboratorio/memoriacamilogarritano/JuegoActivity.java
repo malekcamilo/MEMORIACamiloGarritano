@@ -459,6 +459,13 @@ public class JuegoActivity extends Activity {
                 }
             });
         } else {
+            AssetFileDescriptor descriptor = null;
+            try {
+                descriptor = getAssets().openFd("Final/festejo_final.m4a");
+                JuegoActivity.reproducirSonido(descriptor);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             btnSiguiente.setBackgroundResource(R.drawable.exit);
             TextView t = (TextView) dialogView.findViewById(R.id.textView4);
             t.setTextColor(Color.RED);
