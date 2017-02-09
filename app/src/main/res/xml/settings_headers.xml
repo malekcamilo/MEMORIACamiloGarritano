@@ -2,6 +2,5 @@
     <header
         android:fragment="proyecto.laboratorio.memoriacamilogarritano.PreferencesActivity$PreferencesFragment"
         android:title="Preferencias"
-        android:summary="" />
-
+        android:summary="Generales" />
 </preference-headers>

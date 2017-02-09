@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:fragment="proyecto.laboratorio.memoriacamilogarritano.PreferencesActivity$PreferencesFragment"
-    android:title="Preferencias">
+    android:title="Generales">
     <ListPreference
+        android:icon="@drawable/ic_volume_up_black_18dp"
         android:defaultValue="F"
         android:entries="@array/lista_voz"
         android:entryValues="@array/lista_voz_value"
@@ -20,6 +21,7 @@
 
     <SwitchPreference
         android:title="Habilitar/Deshabilitar Tiempo"
+        android:icon="@drawable/ic_timer_black_18dp"
         android:defaultValue="false"
         android:key="@string/key_switch_tiempo" />
     <ListPreference
@@ -33,6 +35,7 @@
     <PreferenceCategory android:title="Selección de imágenes">
         <Preference
             android:key="@string/key_lista_imagenes"
+            android:icon="@drawable/ic_photo_size_select_actual_black_18dp"
             android:title="Abrir grilla de selección">
             <intent android:action="android.intent.action.VIEW"
                 android:targetPackage="proyecto.laboratorio.memoriacamilogarritano"
