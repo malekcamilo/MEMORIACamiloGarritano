@@ -14,6 +14,9 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -80,6 +83,27 @@ public class JuegoActivity extends Activity {
             counterDownTimer.cancel();
         }
     }
+
+    //Inicio menú nivel
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.nivel_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.menu_nivel) {
+            JuegoActivity.this.mostrarDialogoElegirNivel(JuegoActivity.this);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    //Fin menú nivel
 
     private void leerConfiguraciones() {
         //Es cualquiera el tema del String pero con la lista no se puede zafar de otra manera
@@ -362,7 +386,7 @@ public class JuegoActivity extends Activity {
                                 JuegoActivity.this.armarJuego(CANTIDAD_FIGURAS_MOSTRAR, CANTIDAD_RESPONDIDAS, CANTIDAD_FIGURAS_SELECCIONADAS);
                             } else {
                                 JuegoActivity.this.mostrarDialogoNivelCompleto(JuegoActivity.this);
-                                //JuegoActivity.this.mostrarDialogoElegirNivel(JuegoActivity.this);
+//                                JuegoActivity.this.mostrarDialogoElegirNivel(JuegoActivity.this);
                             }
                         }
                     }, 2000);
