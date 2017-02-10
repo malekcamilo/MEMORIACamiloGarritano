@@ -34,12 +34,12 @@ import java.util.concurrent.TimeUnit;
 public class JuegoActivity extends Activity {
     private static MediaPlayer mPlayer;
     public static int nivel_maximo;
-    int CANTIDAD_FIGURAS_MOSTRAR;
-    int CANTIDAD_FIGURAS_SELECCIONADAS;
-    int CANTIDAD_RESPONDIDAS;
-    int dificultad;
-    int tiempo;
-    int imagenes;
+    private int CANTIDAD_FIGURAS_MOSTRAR;
+    private int CANTIDAD_FIGURAS_SELECCIONADAS;
+    private int CANTIDAD_RESPONDIDAS;
+    private int dificultad;
+    private int tiempo;
+    private int imagenes;
     private Recurso[] recursos = {
             Recurso.MATRA, Recurso.ARRIADOR, Recurso.CABEZADA, Recurso.BOZAL, Recurso.BAJO_MONTURA,
             Recurso.CABALLO, Recurso.CASCO, Recurso.CASCOS, Recurso.CEPILLO, Recurso.CINCHON_DE_VOLTEO,
@@ -518,8 +518,8 @@ public class JuegoActivity extends Activity {
         btns[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                act.escribirDificultad("1");
-                act.leerConfiguraciones();
+//                act.leerConfiguraciones();
+                dificultad=1;
                 act.inicializarJuego();
                 dialog.dismiss();
             }
@@ -528,8 +528,8 @@ public class JuegoActivity extends Activity {
         btns[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                act.escribirDificultad("2");
-                act.leerConfiguraciones();
+//                act.leerConfiguraciones();
+                dificultad=2;
                 act.inicializarJuego();
                 dialog.dismiss();
             }
@@ -537,8 +537,8 @@ public class JuegoActivity extends Activity {
         btns[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                act.escribirDificultad("3");
-                act.leerConfiguraciones();
+//                act.leerConfiguraciones();
+                dificultad=3;
                 act.inicializarJuego();
                 dialog.dismiss();
             }
@@ -546,8 +546,8 @@ public class JuegoActivity extends Activity {
         btns[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                act.escribirDificultad("4");
-                act.leerConfiguraciones();
+//                act.leerConfiguraciones();
+                dificultad=4;
                 act.inicializarJuego();
                 dialog.dismiss();
             }
