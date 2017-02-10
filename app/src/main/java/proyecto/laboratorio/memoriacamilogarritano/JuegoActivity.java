@@ -39,8 +39,8 @@ public class JuegoActivity extends Activity {
     private int CANTIDAD_RESPONDIDAS;
     private int dificultad;
     private int tiempo;
-    private int imagenes;
-    private Recurso[] recursos = {
+//    private int imagenes;
+    static Recurso[] recursos = {
             Recurso.MATRA, Recurso.ARRIADOR, Recurso.CABEZADA, Recurso.BOZAL, Recurso.BAJO_MONTURA,
             Recurso.CABALLO, Recurso.CASCO, Recurso.CASCOS, Recurso.CEPILLO, Recurso.CINCHON_DE_VOLTEO,
             Recurso.COLA, Recurso.CRINES, Recurso.CUERDA, Recurso.ESCARBA_VASOS, Recurso.FUSTA, Recurso.MONTURA,
@@ -112,15 +112,15 @@ public class JuegoActivity extends Activity {
         Log.v("tiempo", String.valueOf(tiempo));
 
         //Para setear el valor por defecto de las imágenes seleccionadas
-        SharedPreferences prefs2 = getSharedPreferences("cant_img", MODE_PRIVATE);
-        imagenes = prefs2.getInt("cant_img", 0);
+//        SharedPreferences prefs2 = getSharedPreferences("cant_img", MODE_PRIVATE);
+//        imagenes = prefs2.getInt("cant_img", 0);
     }
 
     private void inicializarJuego() {
         recursosUsadosMarcados.clear();
-        if (imagenes == 0) {
-            this.seleccionarTodas();
-        }
+//        if (imagenes == 0) {
+//            this.seleccionarTodas();
+//        }
         recursosUsados = this.cargarRecursosUsados();
         CANTIDAD_FIGURAS_MOSTRAR = this.getDificultadCantidadImagenes(dificultad);
         CANTIDAD_FIGURAS_SELECCIONADAS = recursosUsados.size();
@@ -129,18 +129,18 @@ public class JuegoActivity extends Activity {
         this.armarJuego(CANTIDAD_FIGURAS_MOSTRAR, CANTIDAD_RESPONDIDAS, CANTIDAD_FIGURAS_SELECCIONADAS);
     }
 
-    private void seleccionarTodas() {
-        for (Recurso r : recursos) {
-            GrillaActivity.imagenesSeleccionadas.add(String.valueOf(r.getImagen()));
-        }
-        SharedPreferences settings = getApplicationContext().getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.remove("imagenesSeleccionadas");
-        editor.apply();
-        editor.putStringSet("imagenesSeleccionadas", GrillaActivity.imagenesSeleccionadas);
-        editor.apply();
-        editor.commit();
-    }
+//    private void seleccionarTodas() {
+//        for (Recurso r : recursos) {
+//            GrillaActivity.imagenesSeleccionadas.add(String.valueOf(r.getImagen()));
+//        }
+//        SharedPreferences settings = getApplicationContext().getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = settings.edit();
+//        editor.remove("imagenesSeleccionadas");
+//        editor.apply();
+//        editor.putStringSet("imagenesSeleccionadas", GrillaActivity.imagenesSeleccionadas);
+//        editor.apply();
+//        editor.commit();
+//    }
 
     public void armarJuego(int CANTIDAD_FIGURAS_MOSTRAR, int cantidadRespondidas, Integer CANTIDAD_FIGURAS_SELECCIONADAS) {
         nivel_maximo = Math.max(dificultad,nivel_maximo);

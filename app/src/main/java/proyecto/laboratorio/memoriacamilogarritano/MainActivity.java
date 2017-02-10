@@ -2,6 +2,7 @@ package proyecto.laboratorio.memoriacamilogarritano;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -16,9 +17,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences prefs = getSharedPreferences("cant_img", MODE_PRIVATE);
+        int imagenes = prefs.getInt("cant_img", 0);
+        if (imagenes == 0) {
+            this.seleccionarTodas();
+        }
         this.eventoBotonComenzar();
-
-
     }
 
     private void eventoBotonComenzar() {
@@ -49,5 +53,19 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void seleccionarTodas() {
+
+        for (Recurso r : JuegoActivity.recursos) {
+            GrillaActivity.imagenesSeleccionadas.add(String.valueOf(r.getImagen()));
+        }
+        SharedPreferences settings = getApplicationContext().getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.remove("imagenesSeleccionadas");
+        editor.apply();
+        editor.putStringSet("imagenesSeleccionadas", GrillaActivity.imagenesSeleccionadas);
+        editor.apply();
+        editor.commit();
     }
 }
