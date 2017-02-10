@@ -12,13 +12,14 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
+    private int imagenes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SharedPreferences prefs = getSharedPreferences("cant_img", MODE_PRIVATE);
-        int imagenes = prefs.getInt("cant_img", 0);
+        imagenes = prefs.getInt("cant_img", 0);
         if (imagenes == 0) {
             this.seleccionarTodas();
         }

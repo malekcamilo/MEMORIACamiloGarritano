@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
     tools:context="proyecto.laboratorio.memoriacamilogarritano.MainActivity">
 
     <Button
@@ -18,7 +19,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/button_comenzar"
         android:fontFamily="casual"
-        android:background="?android:attr/textColorLink"
+        android:background="?android:attr/textColorHint"
         android:elevation="5dp"
         android:textSize="24sp"
         android:textStyle="normal|bold"

@@ -429,8 +429,7 @@ public class JuegoActivity extends Activity {
         Button btnRepetir = (Button) dialogView.findViewById(R.id.repetir);
         Button btnSiguiente = (Button) dialogView.findViewById(R.id.siguiente);
         final AlertDialog dialog = builder.create();
-//        dialog.setCancelable(false);
-        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
 
 
         btnRepetir.setOnClickListener(new View.OnClickListener() {
