@@ -72,10 +72,10 @@ public class PreferencesActivity extends PreferenceActivity {
 
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            if (key.equals("dificultad")) {
+            /*if (key.equals("dificultad")) {
                 Log.v("cambiado_nivel_maximo","si");
                 JuegoActivity.nivel_maximo = Integer.parseInt(sharedPreferences.getString(key,"4"));
-            }
+            }*/
         }
 
         @Override

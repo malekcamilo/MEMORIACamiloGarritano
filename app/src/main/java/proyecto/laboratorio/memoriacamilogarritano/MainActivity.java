@@ -3,6 +3,7 @@ package proyecto.laboratorio.memoriacamilogarritano;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,6 +26,7 @@ public class MainActivity extends Activity {
         botonComenzar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                JuegoActivity.nivel_maximo = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(MainActivity.this).getString("dificultad","4"));
                 Intent c = new Intent(MainActivity.this,JuegoActivity.class);
                 startActivity(c);
             }
