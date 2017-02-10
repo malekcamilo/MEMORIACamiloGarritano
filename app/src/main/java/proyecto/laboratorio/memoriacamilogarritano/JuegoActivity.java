@@ -504,6 +504,7 @@ public class JuegoActivity extends Activity {
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
         int width = metrics.widthPixels;
+//        Log.v("with",String.valueOf(width));
 
         Button btns[] = new Button[4];
 
@@ -560,15 +561,14 @@ public class JuegoActivity extends Activity {
         dialog.show();
     }
 
-    public void escribirDificultad(String s) {
-        Log.v("escribirDificultad",s);
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-//        SharedPreferences settings2 = getApplicationContext().getSharedPreferences("dificultad", MODE_PRIVATE);
-        SharedPreferences.Editor editor2 = prefs.edit();
-        editor2.putString("dificultad", s);
-        editor2.apply();
-        editor2.commit();
-    }
+//    public void escribirDificultad(String s) {
+//        Log.v("escribirDificultad",s);
+//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+//        SharedPreferences.Editor editor2 = prefs.edit();
+//        editor2.putString("dificultad", s);
+//        editor2.apply();
+//        editor2.commit();
+//    }
 
     private void correrTiempo() {
         //Tengo que ver si está bien acá o debería crear un sólo handler

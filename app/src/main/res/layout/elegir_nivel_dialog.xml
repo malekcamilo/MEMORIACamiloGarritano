@@ -7,14 +7,15 @@
 
     <TextView
         android:text="Elige una dificultad"
+        android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView5"
         android:textStyle="normal|bold"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
