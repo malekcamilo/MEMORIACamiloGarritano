@@ -74,6 +74,12 @@ public class JuegoActivity extends Activity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        this.cancelarAnterior();
+    }
+
     //Inicio menú nivel
 
     @Override
