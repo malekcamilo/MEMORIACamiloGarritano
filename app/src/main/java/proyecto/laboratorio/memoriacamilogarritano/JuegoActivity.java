@@ -52,6 +52,8 @@ public class JuegoActivity extends Activity {
     private Handler hTiempo = null;
     private Runnable rTiempo = null;
     private CountDownTimer counterDownTimer = null;
+    private static boolean activityVisible;
+
 
     public static void reproducirSonido(AssetFileDescriptor descriptor) {
         try {
@@ -77,7 +79,28 @@ public class JuegoActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        this.cancelarAnterior();
+        JuegoActivity.activityPaused();
+        if (isFinishing()) {
+            this.cancelarAnterior();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JuegoActivity.activityResumed();
+    }
+
+    public static boolean isActivityVisible() {
+        return activityVisible;
+    }
+
+    public static void activityResumed() {
+        activityVisible = true;
+    }
+
+    public static void activityPaused() {
+        activityVisible = false;
     }
 
     //Inicio menú nivel
@@ -117,9 +140,6 @@ public class JuegoActivity extends Activity {
         tiempo = Integer.parseInt(tiempoStr);
         Log.v("tiempo", String.valueOf(tiempo));
 
-        //Para setear el valor por defecto de las imágenes seleccionadas
-//        SharedPreferences prefs2 = getSharedPreferences("cant_img", MODE_PRIVATE);
-//        imagenes = prefs2.getInt("cant_img", 0);
     }
 
     private void inicializarJuego() {
@@ -134,19 +154,6 @@ public class JuegoActivity extends Activity {
 
         this.armarJuego(CANTIDAD_FIGURAS_MOSTRAR, CANTIDAD_RESPONDIDAS, CANTIDAD_FIGURAS_SELECCIONADAS);
     }
-
-//    private void seleccionarTodas() {
-//        for (Recurso r : recursos) {
-//            GrillaActivity.imagenesSeleccionadas.add(String.valueOf(r.getImagen()));
-//        }
-//        SharedPreferences settings = getApplicationContext().getSharedPreferences("imagenesSeleccionadas", MODE_PRIVATE);
-//        SharedPreferences.Editor editor = settings.edit();
-//        editor.remove("imagenesSeleccionadas");
-//        editor.apply();
-//        editor.putStringSet("imagenesSeleccionadas", GrillaActivity.imagenesSeleccionadas);
-//        editor.apply();
-//        editor.commit();
-//    }
 
     public void armarJuego(int CANTIDAD_FIGURAS_MOSTRAR, int cantidadRespondidas, Integer CANTIDAD_FIGURAS_SELECCIONADAS) {
         nivel_maximo = Math.max(dificultad,nivel_maximo);
@@ -279,10 +286,6 @@ public class JuegoActivity extends Activity {
     }
 
     private View getImageView(Recurso imageId, Dimension dim) {
-        //LinearLayout layout = new LinearLayout(getApplicationContext());
-        //layout.setLayoutParams(new HorizontalScrollView.LayoutParams(250, 250));
-        //layout.setGravity(Gravity.CENTER);
-
         Display display = getWindowManager().getDefaultDisplay();
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
@@ -458,12 +461,14 @@ public class JuegoActivity extends Activity {
             });
         } else {
             AssetFileDescriptor descriptor = null;
-            try {
-                descriptor = getAssets().openFd("Final/festejo_final.m4a");
-                JuegoActivity.reproducirSonido(descriptor);
-                descriptor.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if ((!isFinishing()) && (isActivityVisible())) {
+                try {
+                    descriptor = getAssets().openFd("Final/festejo_final.m4a");
+                    JuegoActivity.reproducirSonido(descriptor);
+                    descriptor.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             btnSiguiente.setBackgroundResource(R.drawable.exit);
             TextView t = (TextView) dialogView.findViewById(R.id.textView4);
@@ -565,15 +570,6 @@ public class JuegoActivity extends Activity {
         }
         dialog.show();
     }
-
-//    public void escribirDificultad(String s) {
-//        Log.v("escribirDificultad",s);
-//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-//        SharedPreferences.Editor editor2 = prefs.edit();
-//        editor2.putString("dificultad", s);
-//        editor2.apply();
-//        editor2.commit();
-//    }
 
     private void correrTiempo() {
         //Tengo que ver si está bien acá o debería crear un sólo handler
