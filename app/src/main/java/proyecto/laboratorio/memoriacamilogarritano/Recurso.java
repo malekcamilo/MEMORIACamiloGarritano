@@ -6,7 +6,7 @@ package proyecto.laboratorio.memoriacamilogarritano;
 
 public enum Recurso {
     AROS("Aros", R.drawable.aros, "Femeninas/Aros.m4a", "Masculinas/Aros.m4a"),
-    ARREADOR("Arreador", R.drawable.arreador, "Femeninas/Arriador.m4a", "Masculinas/Arriador.m4a"),
+    ARREADOR("Arreador", R.drawable.arreador, "Femeninas/Arreador.m4a", "Masculinas/Arreador.m4a"),
     BAJO_MONTURA("Bajo Montura", R.drawable.bajomontura, "Femeninas/Bajo Montura.m4a", "Masculinas/Bajo Montura.m4a"),
     BOZAL("Bozal", R.drawable.bozal, "Femeninas/Bozal.m4a", "Masculinas/Bozal.m4a"),
     CABALLO("Caballo", R.drawable.caballo, "Femeninas/Caballo.m4a", "Masculinas/Caballo.m4a"),
