@@ -6,7 +6,7 @@ package proyecto.laboratorio.memoriacamilogarritano;
 
 public enum Recurso {
     AROS("Aros", R.drawable.aros, "Femeninas/Aros.m4a", "Masculinas/Aros.m4a"),
-    ARRIADOR("Arriador", R.drawable.arriador, "Femeninas/Arriador.m4a", "Masculinas/Arriador.m4a"),
+    ARREADOR("Arreador", R.drawable.arreador, "Femeninas/Arriador.m4a", "Masculinas/Arriador.m4a"),
     BAJO_MONTURA("Bajo Montura", R.drawable.bajomontura, "Femeninas/Bajo Montura.m4a", "Masculinas/Bajo Montura.m4a"),
     BOZAL("Bozal", R.drawable.bozal, "Femeninas/Bozal.m4a", "Masculinas/Bozal.m4a"),
     CABALLO("Caballo", R.drawable.caballo, "Femeninas/Caballo.m4a", "Masculinas/Caballo.m4a"),
@@ -14,7 +14,7 @@ public enum Recurso {
     CASCO("Casco", R.drawable.casco, "Femeninas/Casco.m4a", "Masculinas/Casco.m4a"),
     CASCOS("Cascos", R.drawable.cascos, "Femeninas/Cascos.m4a", "Masculinas/Cascos.m4a"),
     CEPILLO("Cepillo", R.drawable.cepillo, "Femeninas/Cepillo.m4a", "Masculinas/Cepillo.m4a"),
-    CINCHON_DE_VOLTEO("Cinchon de Volteo", R.drawable.cinchondevolteo, "Femeninas/Cinchon de volteo.m4a", "Masculinas/Cinchon de Volteo.m4a"),
+    CINCHON_DE_VOLTEO("Cinchón de Volteo", R.drawable.cinchondevolteo, "Femeninas/Cinchon de volteo.m4a", "Masculinas/Cinchon de Volteo.m4a"),
     COLA("Cola", R.drawable.cola, "Femeninas/Cola.m4a", "Masculinas/Cola.m4a"),
     CRINES("Crines", R.drawable.crines, "Femeninas/Crines.m4a", "Masculinas/Crines.m4a"),
     CUERDA("Cuerda", R.drawable.cuerda, "Femeninas/Cuerda.m4a", "Masculinas/Cuerda.m4a"),

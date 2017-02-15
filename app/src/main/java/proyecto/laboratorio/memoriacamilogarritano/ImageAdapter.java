@@ -52,7 +52,7 @@ public class ImageAdapter extends BaseAdapter { private Context mContext;
     }
 
     private Recurso[] recursos = {
-            Recurso.MATRA, Recurso.ARRIADOR, Recurso.CABEZADA, Recurso.BOZAL,Recurso.BAJO_MONTURA,
+            Recurso.MATRA, Recurso.ARREADOR, Recurso.CABEZADA, Recurso.BOZAL,Recurso.BAJO_MONTURA,
             Recurso.CABALLO, Recurso.CASCO, Recurso.CASCOS, Recurso.CEPILLO, Recurso.CINCHON_DE_VOLTEO,
             Recurso.COLA,Recurso.CRINES,Recurso.CUERDA,Recurso.ESCARBA_VASOS,Recurso.FUSTA,Recurso.MONTURA,
             Recurso.MONTURIN,Recurso.OJOS,Recurso.OREJAS,Recurso.PALOS,Recurso.PASTO,Recurso.PELOTA,
