@@ -32,18 +32,16 @@
         <item>7</item>
         <item>8</item>
         <item>9</item>
-        <item>10</item>
     </string-array>
     <string-array name="lista_tiempo">
+        <item>10 Segundos</item>
+        <item>20 Segundos</item>
+        <item>30 Segundos</item>
+        <item>40 Segundos</item>
+        <item>50 Segundos</item>
         <item>1 Minuto</item>
-        <item>2 Minutos</item>
-        <item>3 Minutos</item>
-        <item>4 Minutos</item>
-        <item>5 Minutos</item>
-        <item>6 Minutos</item>
-        <item>7 Minutos</item>
-        <item>8 Minutos</item>
-        <item>9 Minutos</item>
-        <item>10 Minutos</item>
+        <item>1 Minuto 10 Segundos</item>
+        <item>1 Minuto 20 Segundos</item>
+        <item>1 Minuto 30 Segundos</item>
     </string-array>
 </resources>
