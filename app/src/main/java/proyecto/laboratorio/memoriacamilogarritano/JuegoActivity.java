@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -39,6 +40,7 @@ public class JuegoActivity extends Activity {
     private int CANTIDAD_RESPONDIDAS;
     private int dificultad;
     private int tiempo;
+    static private final int unidad_tiempo=1000*10;
 //    private int imagenes;
     static Recurso[] recursos = {
             Recurso.MATRA, Recurso.ARREADOR, Recurso.CABEZADA, Recurso.BOZAL, Recurso.BAJO_MONTURA,
@@ -660,11 +662,11 @@ public class JuegoActivity extends Activity {
             }
         };
         //Acá tendría que obtener el tiempo mejor porque ahora son minutos y queda bien
-        hTiempo.postDelayed(rTiempo, 1000 * 10 * tiempo);
+        hTiempo.postDelayed(rTiempo, unidad_tiempo * tiempo);
 
         //Timer
         final TextView text_tiempo = (TextView) findViewById(R.id.textViewTiempo);
-        counterDownTimer = new CountDownTimer(1000 * 10 * tiempo, 1000) {
+        counterDownTimer = new CountDownTimer(unidad_tiempo * tiempo, 1000) {
             public void onTick(long millisUntilFinished) {
                 text_tiempo.setText("Tiempo: " + String.format("%02d", TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)) +
                         ":" + String.format("%02d", TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
