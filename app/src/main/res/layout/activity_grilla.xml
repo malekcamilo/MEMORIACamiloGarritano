@@ -4,6 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:verticalSpacing="2sp"
-    android:columnWidth="200sp"
+    android:horizontalSpacing="2sp"
+    android:columnWidth="160sp"
     android:numColumns="auto_fit"
+    android:stretchMode="columnWidth"
+    android:gravity="center"
     />
