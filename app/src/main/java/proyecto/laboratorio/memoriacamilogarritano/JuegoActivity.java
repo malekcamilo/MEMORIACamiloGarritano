@@ -660,7 +660,7 @@ public class JuegoActivity extends Activity {
             }
         };
         //Acá tendría que obtener el tiempo mejor porque ahora son minutos y queda bien
-        hTiempo.postDelayed(rTiempo, 1000 * 60 * tiempo);
+        hTiempo.postDelayed(rTiempo, 1000 * 10 * tiempo);
 
         //Timer
         final TextView text_tiempo = (TextView) findViewById(R.id.textViewTiempo);
