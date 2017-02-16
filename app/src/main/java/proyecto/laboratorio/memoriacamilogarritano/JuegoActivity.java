@@ -235,7 +235,7 @@ public class JuegoActivity extends Activity {
         this.eventoSonidoRespuesta(respuesta);
     }
 
-    private ArrayList<ImageView> cargarFiguras(int cantidad_figuras_mostrar) {
+    /*private ArrayList<ImageView> cargarFiguras_ant(int cantidad_figuras_mostrar) {
         //EN LA POSICION 0 ESTA LA CORRECTA Y SE MARCA COMO "USADA"
         Dimension dim = this.cargarDimension(cantidad_figuras_mostrar);
         ArrayList<ImageView> imagesAgregar = new ArrayList<>();
@@ -248,7 +248,52 @@ public class JuegoActivity extends Activity {
         recursosUsadosMarcados.add(listadoIndicesImagenes.get(0));
 
         return imagesAgregar;
+    }*/
+
+    private ArrayList<ImageView> cargarFiguras(int cantidad_figuras_mostrar) {
+        //EN LA POSICION 0 ESTA LA CORRECTA Y SE MARCA COMO "USADA"
+        boolean estaIncluida;
+        Dimension dim = this.cargarDimension(cantidad_figuras_mostrar);
+        ArrayList<ImageView> imagesAgregar = new ArrayList<>();
+
+        ArrayList<Integer> indiceImagenCorrecta = this.obtenerIndicesAlAzar(recursosUsados.size(), 1);
+        ImageView imageCorrecta = (ImageView) this.getImageView(recursosUsados.get(indiceImagenCorrecta.get(0)),dim);
+
+
+        ArrayList<Integer> listadoIndicesImagenes = this.obtenerIndicesAlAzarIncorrectas(recursos.length, cantidad_figuras_mostrar-1);
+
+        for (Integer imagenIndice : listadoIndicesImagenes) {
+            imagesAgregar.add((ImageView) this.getImageView(recursos[imagenIndice], dim));
+        }
+
+        estaIncluida = this.estaIncluida(imageCorrecta,imagesAgregar);
+        while (estaIncluida) {
+            imagesAgregar.clear();
+            listadoIndicesImagenes = this.obtenerIndicesAlAzarIncorrectas(recursos.length, cantidad_figuras_mostrar-1);
+            for (Integer imagenIndice : listadoIndicesImagenes) {
+                imagesAgregar.add((ImageView) this.getImageView(recursos[imagenIndice], dim));
+            }
+            estaIncluida = this.estaIncluida(imageCorrecta,imagesAgregar);
+        }
+
+
+        imagesAgregar.add(0,imageCorrecta);
+        recursosUsadosMarcados.add(indiceImagenCorrecta.get(0));
+
+        return imagesAgregar;
     }
+
+    private boolean estaIncluida(ImageView imageCorrecta, ArrayList<ImageView> imagesAgregar) {
+        Recurso tmp;
+        for (ImageView imagenIncorrecta: imagesAgregar) {
+            tmp = (Recurso) imagenIncorrecta.getTag();
+            if (tmp.getImagen() == ((Recurso)imageCorrecta.getTag()).getImagen()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     private Dimension cargarDimension(int cantidad_figuras_mostrar) {
         //Usa objeto dimension pero por ahora el height es igual que el width, asi que con un valor solo alcanzarìa.
@@ -284,6 +329,22 @@ public class JuegoActivity extends Activity {
         }
         return l;
     }
+
+    private ArrayList<Integer> obtenerIndicesAlAzarIncorrectas(int len, int cantidad) {
+        ArrayList<Integer> l = new ArrayList<Integer>();
+        int i = 0;
+        while (i < cantidad) {
+            Integer tmp = this.getRandomInteger(len - 1);
+            if (!l.contains(tmp)) {
+                l.add(tmp);
+                i++;
+            }
+
+        }
+        return l;
+    }
+
+
 
     private View getImageView(Recurso imageId, Dimension dim) {
         Display display = getWindowManager().getDefaultDisplay();
