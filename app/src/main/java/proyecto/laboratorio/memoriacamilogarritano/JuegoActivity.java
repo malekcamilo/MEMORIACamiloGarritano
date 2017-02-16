@@ -70,10 +70,9 @@ public class JuegoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPlayer = new MediaPlayer();
         this.leerConfiguraciones();
         this.inicializarJuego();
-        mPlayer = new MediaPlayer();
-
     }
 
     @Override
@@ -190,6 +189,7 @@ public class JuegoActivity extends Activity {
             TextView text_tiempo = (TextView) findViewById(R.id.textViewTiempo);
             text_tiempo.setText("Tiempo: Ilimitado");
         }
+
         this.eventosOpciones(imageViews, posicionCorrecta);
 
         ((TextView) findViewById(R.id.textViewProgreso)).setText("Progreso: " + String.valueOf(cantidadRespondidas + 1) + "/" + CANTIDAD_FIGURAS_SELECCIONADAS.toString());
@@ -232,7 +232,20 @@ public class JuegoActivity extends Activity {
     private void setearNuevaRespuesta(Respuesta respuesta) {
         TextView textViewRta = (TextView) findViewById(R.id.textView);
         textViewRta.setText(respuesta.getTexto());
+        this.reproducirSonidoInicio(respuesta);
         this.eventoSonidoRespuesta(respuesta);
+    }
+    
+    
+    private void reproducirSonidoInicio(Respuesta respuesta){
+        AssetFileDescriptor descriptor;
+        try {
+            descriptor = getAssets().openFd(respuesta.getSonidoPath());
+            JuegoActivity.reproducirSonido(descriptor);
+            descriptor.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /*private ArrayList<ImageView> cargarFiguras_ant(int cantidad_figuras_mostrar) {
