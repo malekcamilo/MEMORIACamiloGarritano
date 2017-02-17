@@ -453,8 +453,7 @@ public class JuegoActivity extends Activity {
                     view.setBackgroundColor(Color.rgb(0, 173, 56));
                     descriptor.close();
                     //Cancelo el handler si es que se inició
-                    if (hTiempo != null) {
-                        mPlayer.stop();
+                    if (tiempo != 0) {
                         hTiempo.removeCallbacks(rTiempo);
                         counterDownTimer.cancel();
                     }
