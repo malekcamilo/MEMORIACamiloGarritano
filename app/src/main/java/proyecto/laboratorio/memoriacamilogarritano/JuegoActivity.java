@@ -240,12 +240,14 @@ public class JuegoActivity extends Activity {
     
     private void reproducirSonidoInicio(Respuesta respuesta){
         AssetFileDescriptor descriptor;
-        try {
-            descriptor = getAssets().openFd(respuesta.getSonidoPath());
-            JuegoActivity.reproducirSonido(descriptor);
-            descriptor.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if ((!isFinishing()) && (isActivityVisible())) {
+            try {
+                descriptor = getAssets().openFd(respuesta.getSonidoPath());
+                JuegoActivity.reproducirSonido(descriptor);
+                descriptor.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
