@@ -2,6 +2,6 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="texto_juego">36sp</dimen>
-    <dimen name="sonido_juego">42dp</dimen>
+    <dimen name="texto_juego">28sp</dimen>
+    <dimen name="sonido_juego">36dp</dimen>
 </resources>
