@@ -529,7 +529,7 @@ public class JuegoActivity extends Activity {
             btnSiguiente.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    dificultad++;
+                    if (dificultad<4) { dificultad++; }
                     act.inicializarJuego();
                     dialog.dismiss();
 
