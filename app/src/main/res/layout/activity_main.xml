@@ -21,7 +21,7 @@
         android:fontFamily="casual"
         android:background="@android:color/holo_orange_light"
         android:elevation="5dp"
-        android:textSize="24sp"
+        android:textSize="@dimen/boton_main"
         android:textStyle="normal|bold"
         android:padding="10dp" />
 </RelativeLayout>

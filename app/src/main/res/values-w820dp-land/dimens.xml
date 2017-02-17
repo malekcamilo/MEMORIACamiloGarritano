@@ -5,4 +5,5 @@
     <dimen name="activity_horizontal_margin">64dp</dimen>
     <dimen name="texto_juego">56sp</dimen>
     <dimen name="parlante_juego">72dp</dimen>
+    <dimen name="boton_main">24sp</dimen>
 </resources>
