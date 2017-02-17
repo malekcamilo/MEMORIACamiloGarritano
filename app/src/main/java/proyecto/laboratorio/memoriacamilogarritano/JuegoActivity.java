@@ -168,7 +168,7 @@ public class JuegoActivity extends Activity {
         text_nivel.setText("Dificultad: " + this.getDificultadStr(dificultad));
         LinearLayout layout = (LinearLayout) findViewById(R.id.layoutRespuestas);
 
-        CANTIDAD_FIGURAS_MOSTRAR = Math.min(CANTIDAD_FIGURAS_MOSTRAR, CANTIDAD_FIGURAS_SELECCIONADAS);
+        //CANTIDAD_FIGURAS_MOSTRAR = Math.min(CANTIDAD_FIGURAS_MOSTRAR, CANTIDAD_FIGURAS_SELECCIONADAS);
 
         ArrayList<ImageView> imageViews = null;
         imageViews = this.cargarFiguras(CANTIDAD_FIGURAS_MOSTRAR);
