@@ -72,6 +72,7 @@ public class JuegoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPlayer = new MediaPlayer();
+        activityVisible = true;
         this.leerConfiguraciones();
         this.inicializarJuego();
     }
