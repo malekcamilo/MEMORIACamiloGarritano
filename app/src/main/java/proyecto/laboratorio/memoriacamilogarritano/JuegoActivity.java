@@ -12,7 +12,6 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -454,10 +453,10 @@ public class JuegoActivity extends Activity {
                     view.setBackgroundColor(Color.rgb(0, 173, 56));
                     descriptor.close();
                     //Cancelo el handler si es que se inició
-                    /*if (tiempo != 0) {
+                    if (tiempo != 0) {
                         hTiempo.removeCallbacks(rTiempo);
                         counterDownTimer.cancel();
-                    }*/
+                    }
                     view.postDelayed(new Runnable() {
                         public void run() {
                             CANTIDAD_RESPONDIDAS++;
