@@ -3,5 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="texto_juego">28sp</dimen>
-    <dimen name="sonido_juego">36dp</dimen>
+    <dimen name="parlante_juego">44dp</dimen>
 </resources>

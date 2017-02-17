@@ -67,10 +67,10 @@
 
             <ImageView
                 android:id="@+id/imageViewParlante"
-                android:layout_height="@dimen/sonido_juego"
-                android:layout_width="@dimen/sonido_juego"
+                android:layout_height="@dimen/parlante_juego"
+                android:layout_width="@dimen/parlante_juego"
                 android:elevation="5dp"
-                android:paddingLeft="10dp"
+                android:paddingLeft="20dp"
                 android:src="@drawable/speaker_black"/>
 
         </LinearLayout>
