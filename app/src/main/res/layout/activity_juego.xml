@@ -47,13 +47,8 @@
             android:fontFamily="casual"/>
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linearLayoutInfo">
-
         <LinearLayout
+            android:layout_below="@id/linearLayoutInfo"
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,28 +60,27 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textSize="56sp"
                 android:textStyle="bold"
+                android:textSize="@dimen/texto_juego"
                 android:typeface="serif"
                 android:fontFamily="casual"/>
 
             <ImageView
                 android:id="@+id/imageViewParlante"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_height="@dimen/sonido_juego"
+                android:layout_width="@dimen/sonido_juego"
+                android:elevation="5dp"
                 android:paddingLeft="10dp"
-                android:src="@drawable/speaker_black" />
+                android:src="@drawable/speaker_black"/>
 
         </LinearLayout>
-    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/layoutRespuestas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="false"
-        android:layout_below="@id/relativeLayout1"
+        android:layout_below="@id/linearLayout1"
         android:gravity="center_vertical|center_horizontal"
         android:orientation="horizontal">
     </LinearLayout>
