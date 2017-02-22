@@ -18,7 +18,7 @@ public enum Recurso {
     COLA("Cola", R.drawable.cola, "Femeninas/Cola.m4a", "Masculinas/Cola.m4a"),
     CRINES("Crines", R.drawable.crines, "Femeninas/Crines.m4a", "Masculinas/Crines.m4a"),
     CUERDA("Cuerda", R.drawable.cuerda, "Femeninas/Cuerda.m4a", "Masculinas/Cuerda.m4a"),
-    ESCARBA_VASOS("Escarba Vasos", R.drawable.escarbavasos, "Femeninas/Escarba Vasos.m4a", "Masculinas/Escarba Vasos.m4a"),
+    ESCARBA_VASOS("Escarbavasos", R.drawable.escarbavasos, "Femeninas/Escarba Vasos.m4a", "Masculinas/Escarba Vasos.m4a"),
     FUSTA("Fusta", R.drawable.fusta, "Femeninas/Fusta.m4a", "Masculinas/Fusta.m4a"),
     MATRA("Matra", R.drawable.matra, "Femeninas/Matra.m4a", "Masculinas/Matra.m4a"),
     MONTURA("Montura", R.drawable.montura, "Femeninas/Montura.m4a", "Masculinas/Montura.m4a"),
