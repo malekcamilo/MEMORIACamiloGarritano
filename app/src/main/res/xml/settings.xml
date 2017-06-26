@@ -32,6 +32,12 @@
         android:entryValues="@array/lista_tiempo_value"
         android:key="@string/key_tiempo"
         android:summary="%s" />
+    <SeekBarPreference
+        android:key="keyName"
+        android:title="Property Label"
+        android:summary="Summary."
+        android:max="5"
+        android:defaultValue="0" />
 
     <PreferenceCategory android:title="Selección de imágenes">
         <Preference
